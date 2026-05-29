@@ -1,18 +1,346 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-  <title>English Lessons</title>
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 3: Short Vowels /e/, /i/</title>
+    <!-- Google Fonts dành cho trẻ em -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --bg-color: #f7f9fc;
+            --text-color: #2c3e50;
+            --vowel-e: #ff9f43;
+            --vowel-i: #10ac84;
+        }
 
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        /* Giữ nguyên định dạng Title Lesson */
+        .lesson-header {
+            text-align: center;
+            background: linear-gradient(135deg, #ff7675, #6c5ce7);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .lesson-header h1 {
+            font-family: 'Fredoka One', cursive;
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        .lesson-header p {
+            margin: 10px 0 0 0;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .section-title {
+            font-family: 'Fredoka One', cursive;
+            color: #341f97;
+            font-size: 1.8rem;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-left: 6px solid var(--primary-color);
+            padding-left: 15px;
+        }
+
+        /* Phân nhóm Nguyên Âm */
+        .vowel-group {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 3px solid #eee;
+        }
+
+        .group-badge {
+            display: inline-block;
+            font-family: 'Fredoka One', cursive;
+            padding: 8px 20px;
+            border-radius: 15px;
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .badge-e { background-color: var(--vowel-e); }
+        .badge-i { background-color: var(--vowel-i); }
+
+        /* Grid từ vựng 24 từ dựa trên image_fef51d.png */
+        .word-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .word-card {
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .word-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: var(--secondary-color);
+        }
+
+        .word-text {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.6rem;
+            color: #2d3436;
+            margin: 0;
+        }
+
+        .word-ipa {
+            color: #b2bec3;
+            font-size: 0.95rem;
+            margin: 5px 0;
+        }
+
+        /* Gợi ý hình ảnh thân thiện cho bé nếu chưa có asset ảnh gốc */
+        .word-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
+
+        /* Phần bài tập luyện đọc dựa trên image_fef557.png */
+        .reading-section {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .sentence-box {
+            background: #f8f9fa;
+            border-left: 5px solid #6c5ce7;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 0 15px 15px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .sentence-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        /* Tách từng từ để các con bấm đọc lẻ */
+        .clickable-word {
+            display: inline-block;
+            cursor: pointer;
+            padding: 2px 6px;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+        .clickable-word:hover {
+            background-color: #ffeaa7;
+            color: #d63031;
+        }
+
+        .btn-speak-sentence {
+            background-color: #6c5ce7;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: bold;
+            font-size: 0.9rem;
+            border-radius: 10px;
+            cursor: pointer;
+            align-self: flex-start;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: background 0.2s;
+        }
+
+        .btn-speak-sentence:hover {
+            background-color: #5141c3;
+        }
+
+        /* Animation khi đang đọc */
+        .speaking-active {
+            animation: pulse 1s infinite alternate;
+            background-color: #ffeaa7 !important;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
+    </style>
+</head>
 <body>
 
-<h1>Welcome</h1>
+<div class="container">
+    
+    <!-- GIỮ NGUYÊN ĐỊNH DẠNG TITLE CỦA LESSON 1 -->
+    <div class="lesson-header">
+        <h1>LESSON 3</h1>
+        <p>Short Vowels: /e/ & /i/</p>
+    </div>
 
-<ul>
-  <li><a href="lesson1/">Lesson 1</a></li>
-  <li><a href="lesson2/">Lesson 2</a></li>
-  <li><a href="lesson3/">Lesson 3</a></li>
-</ul>
+    <!-- PHẦN 1: TỪ VỰNG (24 TỪ THEO PHÂN NHÓM TRONG ẢNH image_fef51d.png) -->
+    <div class="section-title">⭐ 1. Let's Learn Words!</div>
+
+    <!-- NHÓM NGUYÊN ÂM /e/ -->
+    <div class="vowel-group">
+        <div class="group-badge badge-e">Short e /e/, /et/, /en/, /ed/</div>
+        <div class="word-grid">
+            <!-- Dòng 1 ảnh gốc -->
+            <div class="word-card" onclick="speak('egg')"><div class="word-emoji">🥚</div><p class="word-text">egg</p><p class="word-ipa">/eɡ/</p></div>
+            <div class="word-card" onclick="speak('vet')"><div class="word-emoji">👩‍⚕️</div><p class="word-text">vet</p><p class="word-ipa">/vet/</p></div>
+            <div class="word-card" onclick="speak('ten')"><div class="word-emoji">🔟</div><p class="word-text">ten</p><p class="word-ipa">/ten/</p></div>
+            <div class="word-card" onclick="speak('web')"><div class="word-emoji">🕸️</div><p class="word-text">web</p><p class="word-ipa">/web/</p></div>
+            <!-- Dòng 2 ảnh gốc -->
+            <div class="word-card" onclick="speak('jet')"><div class="word-emoji">✈️</div><p class="word-text">jet</p><p class="word-ipa">/dʒet/</p></div>
+            <div class="word-card" onclick="speak('net')"><div class="word-emoji">🕸️</div><p class="word-text">net</p><p class="word-ipa">/net/</p></div>
+            <div class="word-card" onclick="speak('wet')"><div class="word-emoji">🧼</div><p class="word-text">wet</p><p class="word-ipa">/wet/</p></div>
+            <!-- Dòng 3 ảnh gốc -->
+            <div class="word-card" onclick="speak('hen')"><div class="word-emoji">🐔</div><p class="word-text">hen</p><p class="word-ipa">/hen/</p></div>
+            <div class="word-card" onclick="speak('pen')"><div class="word-emoji">🖊️</div><p class="word-text">pen</p><p class="word-ipa">/pen/</p></div>
+            <div class="word-card" onclick="speak('red')"><div class="word-emoji">🔴</div><p class="word-text">red</p><p class="word-ipa">/red/</p></div>
+            <div class="word-card" onclick="speak('bed')"><div class="word-emoji">🛏️</div><p class="word-text">bed</p><p class="word-ipa">/bed/</p></div>
+        </div>
+    </div>
+
+    <!-- NHÓM NGUYÊN ÂM /i/ -->
+    <div class="vowel-group">
+        <div class="group-badge badge-i">Short i /i/, /ip/, /id/, /ib/</div>
+        <div class="word-grid">
+            <!-- Dòng 4 ảnh gốc -->
+            <div class="word-card" onclick="speak('ink')"><div class="word-emoji">✒️</div><p class="word-text">ink</p><p class="word-ipa">/ɪŋk/</p></div>
+            <div class="word-card" onclick="speak('hip')"><div class="word-emoji">🧍</div><p class="word-text">hip</p><p class="word-ipa">/hɪp/</p></div>
+            <div class="word-card" onclick="speak('in')"><div class="word-emoji">📥</div><p class="word-text">in</p><p class="word-ipa">/ɪn/</p></div>
+            <div class="word-card" onclick="speak('zip')"><div class="word-emoji">🤐</div><p class="word-text">zip</p><p class="word-ipa">/zɪp/</p></div>
+            <!-- Dòng 5 ảnh gốc -->
+            <div class="word-card" onclick="speak('sip')"><div class="word-emoji">🥤</div><p class="word-text">sip</p><p class="word-ipa">/sɪp/</p></div>
+            <div class="word-card" onclick="speak('rip')"><div class="word-emoji">⚡</div><p class="word-text">rip</p><p class="word-ipa">/rɪp/</p></div>
+            <div class="word-card" onclick="speak('lip')"><div class="word-emoji">👄</div><p class="word-text">lip</p><p class="word-ipa">/lɪp/</p></div>
+            <div class="word-card" onclick="speak('tip')"><div class="word-emoji">👉</div><p class="word-text">tip</p><p class="word-ipa">/tɪp/</p></div>
+            <!-- Dòng 6 ảnh gốc -->
+            <div class="word-card" onclick="speak('lid')"><div class="word-emoji">🍲</div><p class="word-text">lid</p><p class="word-ipa">/lɪd/</p></div>
+            <div class="word-card" onclick="speak('kid')"><div class="word-emoji">👦</div><p class="word-text">kid</p><p class="word-ipa">/kɪd/</p></div>
+            <div class="word-card" onclick="speak('bib')"><div class="word-emoji">👶</div><p class="word-text">bib</p><p class="word-ipa">/bɪb/</p></div>
+            <div class="word-card" onclick="speak('rib')"><div class="word-emoji">🩻</div><p class="word-text">rib</p><p class="word-ipa">/rɪb/</p></div>
+        </div>
+    </div>
+
+
+    <!-- PHẦN 2: BÀI TẬP LUYỆN ĐỌC (DỰA TRÊN CÁC CÂU MINH HỌA TRONG image_fef557.png) -->
+    <div class="section-title">📚 2. Practice Reading (Bấm vào từ hoặc câu để nghe)</div>
+    
+    <div class="reading-section">
+        <!-- Câu số 4 xử lý từ ảnh gốc -->
+        <div class="sentence-box">
+            <div class="sentence-text" id="s4">
+                <!-- Sử dụng hàm gộp để chia nhỏ từ tách biệt -->
+            </div>
+            <button class="btn-speak-sentence" onclick="speakSentence('The vet has ten big eggs.', 's4')">🔊 Đọc cả câu (Sentence 4)</button>
+        </div>
+
+        <!-- Câu số 5 xử lý từ ảnh gốc (Sửa lỗi dính chữ trong hình sang câu chuẩn) -->
+        <div class="sentence-box">
+            <div class="sentence-text" id="s5"></div>
+            <button class="btn-speak-sentence" onclick="speakSentence('The red pen is on the bed.', 's5')">🔊 Đọc cả câu (Sentence 5)</button>
+        </div>
+
+        <!-- Câu số 6 xử lý từ ảnh gốc -->
+        <div class="sentence-box">
+            <div class="sentence-text" id="s6"></div>
+            <button class="btn-speak-sentence" onclick="speakSentence('I want to sip with my lips.', 's6')">🔊 Đọc cả câu (Sentence 6)</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // Khởi tạo danh sách câu để render tương tác tách chữ tự động
+    const sentencesData = {
+        s4: "The vet has ten big eggs",
+        s5: "The red pen is on the bed",
+        s6: "I want to sip with my lips"
+    };
+
+    // Hàm tự động tạo thẻ span cho từng từ để click nghe lẻ từng từ
+    function renderSentences() {
+        for (let key in sentencesData) {
+            const container = document.getElementById(key);
+            const words = sentencesData[key].split(" ");
+            container.innerHTML = words.map(word => 
+                `<span class="clickable-word" onclick="speak('${word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"")}')">${word}</span>`
+            ).join(" ");
+        }
+    }
+
+    // Hàm đọc 1 từ đơn lẻ (Giọng chuẩn US, tốc độ vừa phải cho bé)
+    function speak(word) {
+        // Hủy các giọng đang đọc dở để tránh đè âm
+        window.speechSynthesis.cancel();
+        
+        const utterance = new SpeechSynthesisUtterance(word);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.85; // Đọc chậm một chút để học sinh nghe rõ âm đuôi (ending sounds)
+        window.speechSynthesis.speak(utterance);
+    }
+
+    // Hàm đọc toàn bộ câu và tạo hiệu ứng nhấp nháy box câu cho trẻ thích thú
+    function speakSentence(fullText, elementId) {
+        window.speechSynthesis.cancel();
+
+        const element = document.getElementById(elementId);
+        element.classList.add('speaking-active');
+
+        const utterance = new SpeechSynthesisUtterance(fullText);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.8; // Tốc độ lý tưởng để luyện đọc theo shadow
+        
+        utterance.onend = function() {
+            element.classList.remove('speaking-active');
+        };
+
+        window.speechSynthesis.speak(utterance);
+    }
+
+    // Chạy render ngay khi trang được tải xong
+    window.onload = renderSentences;
+</script>
 
 </body>
 </html>

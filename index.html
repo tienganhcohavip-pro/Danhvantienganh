@@ -1,18 +1,364 @@
+```html id="vqjef9"
 <!DOCTYPE html>
-<html>
+<html lang="vi">
+
 <head>
-  <title>English Lessons</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Bé luyện đánh vần tiếng Anh</title>
+
+  <style>
+
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+
+      margin:0;
+      padding:0;
+
+      font-family:Arial, sans-serif;
+
+      background:linear-gradient(
+        to bottom,
+        #f4f9fc,
+        #edf5f8
+      );
+
+      color:#2f5d7c;
+    }
+
+    .container{
+
+      max-width:1200px;
+
+      margin:auto;
+
+      padding:40px 20px 80px;
+    }
+
+    /* ===== HEADER ===== */
+
+    .hero{
+
+      background:white;
+
+      border-radius:30px;
+
+      padding:50px 35px;
+
+      text-align:center;
+
+      box-shadow:0 8px 25px rgba(0,0,0,0.06);
+
+      border:3px solid #dcecf5;
+
+      margin-bottom:40px;
+    }
+
+    .main-title{
+
+      font-size:52px;
+
+      font-weight:bold;
+
+      color:#2f5d7c;
+
+      line-height:1.3;
+
+      margin-bottom:20px;
+    }
+
+    .sub-title{
+
+      font-size:24px;
+
+      color:#6d7f8b;
+
+      line-height:1.7;
+
+      margin-bottom:30px;
+    }
+
+    .age-box{
+
+      display:inline-block;
+
+      background:#e9f6ff;
+
+      color:#2f5d7c;
+
+      padding:12px 25px;
+
+      border-radius:999px;
+
+      font-size:20px;
+
+      font-weight:bold;
+    }
+
+    /* ===== INTRO ===== */
+
+    .intro-section{
+
+      background:white;
+
+      border-radius:30px;
+
+      padding:40px 30px;
+
+      margin-bottom:45px;
+
+      box-shadow:0 8px 25px rgba(0,0,0,0.05);
+
+      border:3px solid #dcecf5;
+    }
+
+    .section-title{
+
+      font-size:36px;
+
+      font-weight:bold;
+
+      color:#2f5d7c;
+
+      margin-bottom:25px;
+
+      text-align:center;
+    }
+
+    .intro-text{
+
+      font-size:22px;
+
+      line-height:1.9;
+
+      color:#556b78;
+
+      text-align:center;
+    }
+
+    .highlight{
+
+      color:#ff6b6b;
+
+      font-weight:bold;
+    }
+
+    /* ===== LESSONS ===== */
+
+    .lesson-title{
+
+      text-align:center;
+
+      font-size:42px;
+
+      color:#2f5d7c;
+
+      margin-bottom:35px;
+
+      font-weight:bold;
+    }
+
+    .lesson-grid{
+
+      display:grid;
+
+      grid-template-columns:
+      repeat(auto-fit,minmax(220px,1fr));
+
+      gap:28px;
+    }
+
+    .lesson-card{
+
+      background:white;
+
+      border-radius:25px;
+
+      padding:35px 20px;
+
+      text-decoration:none;
+
+      text-align:center;
+
+      border:3px solid #dcecf5;
+
+      box-shadow:0 6px 18px rgba(0,0,0,0.05);
+
+      transition:0.3s;
+    }
+
+    .lesson-card:hover{
+
+      transform:translateY(-8px);
+
+      border-color:#91d1f3;
+
+      box-shadow:0 12px 24px rgba(0,0,0,0.08);
+    }
+
+    .lesson-number{
+
+      font-size:34px;
+
+      font-weight:bold;
+
+      color:#ff6b6b;
+
+      margin-bottom:12px;
+    }
+
+    .lesson-name{
+
+      font-size:22px;
+
+      color:#2f5d7c;
+
+      font-weight:bold;
+    }
+
+    /* ===== FOOTER ===== */
+
+    .footer{
+
+      text-align:center;
+
+      margin-top:60px;
+
+      font-size:18px;
+
+      color:#7a8c98;
+
+      line-height:1.8;
+    }
+
+    /* ===== MOBILE ===== */
+
+    @media(max-width:768px){
+
+      .main-title{
+        font-size:38px;
+      }
+
+      .sub-title{
+        font-size:20px;
+      }
+
+      .section-title{
+        font-size:30px;
+      }
+
+      .intro-text{
+        font-size:19px;
+      }
+
+      .lesson-title{
+        font-size:34px;
+      }
+
+    }
+
+  </style>
 </head>
 
 <body>
 
-  <h1>Welcome to English Lessons</h1>
+  <div class="container">
 
-  <ul>
-    <li><a href="lesson1/">Lesson 1</a></li>
-    <li><a href="lesson2/">Lesson 2</a></li>
-    <li><a href="lesson3/">Lesson 3</a></li>
-  </ul>
+    <!-- HEADER -->
+
+    <div class="hero">
+
+      <div class="main-title">
+        Bé luyện đánh vần tiếng Anh
+      </div>
+
+      <div class="sub-title">
+        Tiếng Anh cô Hà<br>
+        Nhịp cầu nhỏ bước ra thế giới
+      </div>
+
+      <div class="age-box">
+        Dành cho học sinh Tiểu học
+      </div>
+
+    </div>
+
+    <!-- INTRO -->
+
+    <div class="intro-section">
+
+      <div class="section-title">
+        Vì sao nên học đánh vần tiếng Anh?
+      </div>
+
+      <div class="intro-text">
+
+        Giúp con <span class="highlight">
+        phát âm chuẩn</span> mà không cần tra từ điển.<br><br>
+
+        Giúp con <span class="highlight">
+        nhớ mặt chữ</span> để viết đúng chính tả.<br><br>
+
+        Giúp con <span class="highlight">
+        dễ dàng tự học từ mới</span>
+        chỉ bằng cách nhìn vào quy tắc ghép âm.
+
+      </div>
+
+    </div>
+
+    <!-- LESSON -->
+
+    <div class="lesson-title">
+      Danh sách bài học
+    </div>
+
+    <div class="lesson-grid">
+
+      <a class="lesson-card" href="lesson1/">
+        <div class="lesson-number">Lesson 1</div>
+        <div class="lesson-name">Nguyên âm a</div>
+      </a>
+
+      <a class="lesson-card" href="lesson2/">
+        <div class="lesson-number">Lesson 2</div>
+        <div class="lesson-name">Nguyên âm e</div>
+      </a>
+
+      <a class="lesson-card" href="lesson3/">
+        <div class="lesson-number">Lesson 3</div>
+        <div class="lesson-name">Nguyên âm i</div>
+      </a>
+
+      <a class="lesson-card" href="lesson4/">
+        <div class="lesson-number">Lesson 4</div>
+        <div class="lesson-name">Nguyên âm o</div>
+      </a>
+
+      <a class="lesson-card" href="lesson5/">
+        <div class="lesson-number">Lesson 5</div>
+        <div class="lesson-name">Nguyên âm u</div>
+      </a>
+
+      <a class="lesson-card" href="lesson6/">
+        <div class="lesson-number">Lesson 6</div>
+        <div class="lesson-name">Ôn tập</div>
+      </a>
+
+    </div>
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+      Chúc các con học tập thật vui và tự tin hơn mỗi ngày 🌱
+    </div>
+
+  </div>
 
 </body>
 </html>
+```

@@ -3,401 +3,429 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tiếng Anh Cô Hà - Phonics World</title>
-    <!-- Nhúng font chữ mềm mại nghệ thuật cho thương hiệu và font chữ dễ đọc cho bài học -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Fredoka+One&family=Pacifico&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
-    
+    <title>Short Vowel e /e/ - Phonics World for Kids</title>
     <style>
+        /* --- 1. THIẾT KẾ GIAO DIỆN CHUẨN TIỂU HỌC --- */
         :root {
-            --primary: #FF6B6B;
-            --secondary: #4ECDC4;
-            --warning: #FFE66D;
-            --accent: #FF9F43;
-            --text-color: #2F3E46;
-            --bg-color: #F0F7F4;
+            --primary-bg: #F3F9FF;
+            --header-bg: #FFEFA6;
+            --text-color: #333;
+            --vowel-color: #FF4949; /* Đỏ rực rỡ để kích thích nhận diện mặt chữ */
+            --word-tab-color: #6BCB77;
+            --sentence-tab-color: #4D96FF;
+            --btn-sentence-audio: #FF9F43;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: 'Quicksand', sans-serif;
-            background-color: var(--bg-color);
+            background-color: var(--primary-bg);
             color: var(--text-color);
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding-bottom: 50px;
         }
 
-        /* Khu vực thương hiệu góc trên bên phải */
-        .brand-box {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            text-align: center; /* Căn giữa dòng dưới so với dòng trên */
-            background: rgba(255, 255, 255, 0.85);
-            padding: 10px 15px;
-            border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border: 2px dashed var(--secondary);
-            z-index: 10;
-        }
-
-        .brand-top {
-            font-family: 'Pacifico', cursive;
-            color: var(--primary);
-            font-size: 1.25rem;
-            margin: 0;
-            white-space: nowrap;
-        }
-
-        .brand-bottom {
-            font-family: 'Dancing Script', cursive;
-            color: #4a4a4a;
-            font-size: 1.1rem;
-            margin: 3px 0 0 0;
-            display: block; /* Đảm bảo xuống dòng để tính năng căn giữa hoạt động */
-        }
-
-        .container {
-            max-width: 850px;
-            width: 100%;
-            background: white;
-            padding: 30px;
-            border-radius: 30px;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.06);
-            border: 5px solid var(--secondary);
-            margin-top: 80px; /* Tránh đè lên phần thương hiệu trên mobile */
-            position: relative;
-        }
-
-        h1 {
-            font-family: 'Fredoka One', cursive;
-            color: var(--primary);
+        /* Header đáng yêu */
+        header {
+            background-color: var(--header-bg);
+            padding: 20px 15px;
             text-align: center;
+            border-bottom-right-radius: 30px;
+            border-bottom-left-radius: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        header h1 {
             font-size: 2.2rem;
+            color: #FF6B6B;
             margin-bottom: 5px;
-            letter-spacing: 1px;
         }
-        
-        .sub-title {
-            text-align: center;
-            color: #6c757d;
-            margin-bottom: 30px;
+
+        header p {
+            font-size: 1.1rem;
+            color: #4D96FF;
+            font-weight: 600;
+        }
+
+        /* Thanh điều hướng Tabs */
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px auto;
+            max-width: 500px;
+            padding: 0 15px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            font-size: 1.1rem;
             font-weight: bold;
+            border: 2px solid #BDD7EE;
+            border-radius: 16px;
+            background-color: #E1EDF9;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
 
-        .section-header {
-            background: var(--warning);
-            padding: 12px 25px;
-            border-radius: 15px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
-            font-size: 1.2rem;
-            margin-top: 25px;
-            box-shadow: 0 4px 0 #E6CE56;
+        .tab-btn.active-words {
+            background-color: var(--word-tab-color);
+            color: white;
+            border-color: #5bb366;
+            box-shadow: 0 4px 12px rgba(107, 203, 119, 0.3);
         }
 
-        /* Lưới thẻ từ vựng Flashcard */
-        .word-grid {
+        .tab-btn.active-sentences {
+            background-color: var(--sentence-tab-color);
+            color: white;
+            border-color: #3b82eb;
+            box-shadow: 0 4px 12px rgba(77, 150, 255, 0.3);
+        }
+
+        /* Vùng nội dung bài học */
+        .content-section {
+            display: none;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        /* --- 2. LAYOUT TỪ VỰNG (WORDS GRID) --- */
+        .words-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 18px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
         }
 
         .word-card {
-            background: #fff;
-            border: 3px solid #E2E8F0;
-            border-radius: 20px;
-            padding: 18px;
+            background: white;
+            border: 3px solid #E2ECEF;
+            border-radius: 24px;
+            padding: 20px 10px;
             text-align: center;
             cursor: pointer;
-            transition: transform 0.2s, border-color 0.2s;
             position: relative;
-            overflow: hidden;
+            transition: transform 0.2s, border-color 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
         }
 
         .word-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            border-color: var(--primary);
-            background-color: #FFF5F5;
+            transform: translateY(-5px);
+        }
+
+        .word-card.playing {
+            border-color: #FF6B6B;
+            background-color: #FFF0F0;
+            animation: pulse 1s infinite alternate;
+        }
+
+        .word-card img {
+            width: 110px;
+            height: 110px;
+            object-fit: contain;
+            margin-bottom: 10px;
         }
 
         .word-text {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #2D3748;
-            margin: 0;
+            font-size: 1.6rem;
+            font-weight: bold;
+            letter-spacing: 0.5px;
         }
 
-        .word-ipa {
-            color: #718096;
-            font-size: 1rem;
-            margin: 5px 0 0 0;
-            background: #EDF2F7;
-            border-radius: 10px;
-            padding: 2px 5px;
-            display: inline-block;
+        /* Highlight chữ e mục tiêu */
+        .letter-e {
+            color: var(--vowel-color);
+            font-weight: 800;
         }
 
-        /* Danh sách câu luyện đọc */
-        .sentence-list {
-            margin-top: 20px;
-        }
-
-        .sentence-item {
-            background: #F8FAFC;
-            border: 2px solid #E2E8F0;
-            border-left: 8px solid var(--secondary);
-            padding: 20px;
-            margin-bottom: 18px;
-            border-radius: 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.2s;
-        }
-
-        .sentence-item:hover {
-            border-color: var(--secondary);
-            background: #F0FDFA;
-            transform: translateX(5px);
-        }
-
-        .sentence-content {
-            flex-grow: 1;
-            padding-right: 20px;
-        }
-
-        .sentence-eng {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #1A365D;
-            margin: 0;
-            line-height: 1.6;
-        }
-
-        /* Từng từ đơn lẻ trong câu để con bấm */
-        .word-span {
-            display: inline-block;
-            cursor: pointer;
-            padding: 0 4px;
-            border-radius: 6px;
-            transition: all 0.15s;
-        }
-        .word-span:hover {
-            background-color: var(--warning);
-            color: #000;
-            transform: scale(1.1);
-        }
-
-        /* Hiệu ứng Karaoke: Từ nào đang đọc sẽ sáng màu này lên */
-        .word-span.highlight-active {
-            background-color: var(--primary) !important;
-            color: white !important;
-            transform: scale(1.15);
-            box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
-        }
-
-        .sentence-vi {
-            font-size: 1rem;
-            color: #4A5568;
-            margin: 8px 0 0 0;
+        .ipa-text {
+            font-size: 0.95rem;
+            color: #777;
             font-style: italic;
+            margin: 3px 0 6px 0;
         }
 
-        .control-btns {
+        .meaning-text {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .speaker-badge {
+            display: inline-block;
+            margin-top: 10px;
+            background-color: #F0F0F0;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        /* --- 3. LAYOUT LUYỆN ĐỌC CÂU (SENTENCES) --- */
+        .sentence-list {
             display: flex;
-            gap: 10px;
+            flex-direction: column;
+            gap: 25px;
         }
 
-        .app-btn {
+        .sentence-card {
+            background: white;
+            border: 3px solid #DFF6FF;
+            border-radius: 24px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        /* Nút phát âm thanh cả câu */
+        .play-sentence-btn {
+            background-color: var(--btn-sentence-audio);
+            color: white;
             border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            padding: 10px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 20px;
             cursor: pointer;
+            margin-bottom: 15px;
+            transition: background-color 0.2s;
+        }
+
+        .play-sentence-btn.playing {
+            background-color: var(--word-tab-color);
+        }
+
+        /* Hàng chữ chứa các từ tương tác rải rác */
+        .sentence-words-row {
             display: flex;
-            align-items: center;
+            flex-wrap: wrap;
             justify-content: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.08);
-            transition: all 0.1s;
+            gap: 6px 10px;
+            margin: 15px 0;
         }
 
-        .btn-play { background: var(--primary); }
-        .btn-mic { background: var(--accent); }
-
-        .app-btn:active { transform: scale(0.9); }
-        .app-btn svg { fill: white; width: 22px; height: 22px; }
-
-        /* Animation khi đang phát âm */
-        .wave-active {
-            animation: pulse-wave 0.6s infinite alternate;
-        }
-        @keyframes pulse-wave {
-            from { transform: scale(1); box-shadow: 0 0 0 0px rgba(255, 107, 107, 0.4); }
-            to { transform: scale(1.05); box-shadow: 0 0 0 12px rgba(255, 107, 107, 0); }
+        .interactive-word {
+            display: inline-block;
+            padding: 6px 12px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            background-color: #F5F5F5;
+            border-radius: 12px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.1s ease;
+            user-select: none;
         }
 
-        /* Tương thích thiết bị di động */
-        @media (max-width: 768px) {
-            .brand-box { position: static; margin-bottom: 15px; width: 90%; }
-            .container { margin-top: 10px; padding: 15px; }
-            h1 { font-size: 1.8rem; }
-            .sentence-eng { font-size: 1.25rem; }
+        .interactive-word:active {
+            transform: scale(0.95);
+        }
+
+        /* Highlight khối từ chứa vần e ngắn */
+        .word-has-e {
+            background-color: #FFE3E3;
+            border: 1px solid #FFB3B3;
+        }
+
+        .sentence-meaning {
+            font-size: 1.05rem;
+            color: #888;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        /* Hiệu ứng nhịp đập khi đang phát âm thanh */
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.02); }
         }
     </style>
 </head>
 <body>
 
-    <!-- KHU VỰC CHỮ KÝ THƯƠNG HIỆU CỦA CÔ HÀ -->
-    <div class="brand-box">
-        <span class="brand-top">Tiếng anh cô Hà - 0392.661.652</span>
-        <span class="brand-bottom">Nhịp cầu nhỏ bước ra thế giới</span>
+    <header>
+        <h1>Short Vowel e /e/</h1>
+        <p>Let's learn the short "e" sound! 🌟</p>
+    </header>
+
+    <div class="tab-container">
+        <button class="tab-btn active-words" id="tabWords" onclick="switchTab('words')">🔤 Words</button>
+        <button class="tab-btn" id="tabSentences" onclick="switchTab('sentences')">📖 Sentences</button>
     </div>
 
-    <div class="container">
-        <h1 id="main-title">OXFORD PHONICS WORLD</h1>
-        <div class="sub-title" id="sub-title">Bé Luyện Đánh Vần Tiếng Anh</div>
+    <section id="sectionWords" class="content-section active">
+        <div class="words-grid" id="wordsGrid">
+            </div>
+    </section>
 
-        <!-- PHẦN 1: TỪ VỰNG -->
-        <div class="section-header">🎈 1. Bấm Xem & Nghe Âm Từ Từ Rời</div>
-        <div class="word-grid" id="words-grid"></div>
-
-        <!-- PHẦN 2: LUYỆN CÂU KARAOKE -->
-        <div class="section-header">📖 2. Bé Tập Đọc Theo Câu Học</div>
-        <div class="sentence-list" id="sentences-list"></div>
-    </div>
+    <section id="sectionSentences" class="content-section">
+        <div class="sentence-list" id="sentencesList">
+            </div>
+    </section>
 
     <script>
-        // Dữ liệu mẫu lấy từ nội dung file "ĐÁNH VẦN TIẾNG ANH oxford phonics world.pdf" của bạn
-        const currentLesson = {
-            lessonName: "SHORT VOWELS (Nguyên âm ngắn /æ/)",
+        // 1. Khởi tạo đối tượng âm thanh toàn cục giúp chống trùng lặp âm thanh khi bé bấm liên tục
+        let currentAudio = null;
+
+        // 2. Cơ sở dữ liệu cấu trúc đồng nhất (Dựa theo Oxford Phonics World)
+        const lessonData = {
+            vowel: "e",
             words: [
-                { text: "Cat", ipa: "/kæt/" },
-                { text: "Ant", ipa: "/ænt/" },
-                { text: "Fan", ipa: "/fæn/" },
-                { text: "Man", ipa: "/mæn/" },
-                { text: "Dad", ipa: "/dæd/" },
-                { text: "Hat", ipa: "/hæt/" },
-                { text: "Bag", ipa: "/bæg/" },
-                { text: "Map", ipa: "/mæp/" }
+                { id: "w1", word: "egg", ipa: "/eɡ/", meaning: "quả trứng", image: "https://placehold.co/150x150/fdf3cd/ff6b6b?text=egg", audio: "audios/words/egg.mp3" },
+                { id: "w2", word: "vet", ipa: "/vet/", meaning: "bác sĩ thú y", image: "https://placehold.co/150x150/fdf3cd/ff6b6b?text=vet", audio: "audios/words/vet.mp3" },
+                { id: "w3", word: "ten", ipa: "/ten/", meaning: "số 10", image: "https://placehold.co/150x150/fdf3cd/ff6b6b?text=ten", audio: "audios/words/ten.mp3" },
+                { id: "w4", word: "web", ipa: "/web/", meaning: "mạng nhện", image: "https://placehold.co/150x150/fdf3cd/ff6b6b?text=web", audio: "audios/words/web.mp3" },
+                { id: "w5", word: "jet", ipa: "/dʒet/", meaning: "máy bay phản lực", image: "https://placehold.co/150x150/e1edf9/4d96ff?text=jet", audio: "audios/words/jet.mp3" },
+                { id: "w6", word: "net", ipa: "/net/", meaning: "cái lưới", image: "https://placehold.co/150x150/e1edf9/4d96ff?text=net", audio: "audios/words/net.mp3" },
+                { id: "w7", word: "wet", ipa: "/wet/", meaning: "bị ướt", image: "https://placehold.co/150x150/e1edf9/4d96ff?text=wet", audio: "audios/words/wet.mp3" },
+                { id: "w8", word: "hen", ipa: "/hen/", meaning: "con gà mái", image: "https://placehold.co/150x150/e8f5e9/6bcb77?text=hen", audio: "audios/words/hen.mp3" },
+                { id: "w9", word: "pen", ipa: "/pen/", meaning: "cái bút mực", image: "https://placehold.co/150x150/e8f5e9/6bcb77?text=pen", audio: "audios/words/pen.mp3" },
+                { id: "w10", word: "red", ipa: "/red/", meaning: "màu đỏ", image: "https://placehold.co/150x150/ffe3e3/ff4949?text=red", audio: "audios/words/red.mp3" },
+                { id: "w11", word: "bed", ipa: "/bed/", meaning: "cái giường", image: "https://placehold.co/150x150/ffe3e3/ff4949?text=bed", audio: "audios/words/bed.mp3" }
             ],
             sentences: [
-                { eng: "I see an ant and an ax.", vi: "Tớ nhìn thấy một con kiến và một cái rìu." },
-                { eng: "The man has a fan and a hat.", vi: "Người đàn ông có một cái quạt và một chiếc mũ." },
-                { eng: "Is that your bag on the mat?", vi: "Có phải cái cặp của bạn ở trên tấm thảm không?" }
+                {
+                    id: "s1",
+                    sentence: "The red hen is on the bed.",
+                    highlightWords: ["red", "hen", "bed"],
+                    meaning: "Con gà mái màu đỏ đang ở trên giường.",
+                    audioSentence: "audios/sentences/sentence_e1.mp3",
+                    wordAudioMap: {
+                        "The": "audios/words/the.mp3", "red": "audios/words/red.mp3", "hen": "audios/words/hen.mp3",
+                        "is": "audios/words/is.mp3", "on": "audios/words/on.mp3", "the": "audios/words/the.mp3", "bed.": "audios/words/bed.mp3"
+                    }
+                },
+                {
+                    id: "s2",
+                    sentence: "The vet has ten big eggs.",
+                    highlightWords: ["vet", "ten", "eggs"],
+                    meaning: "Bác sĩ thú y có mười quả trứng lớn.",
+                    audioSentence: "audios/sentences/sentence_e2.mp3",
+                    wordAudioMap: {
+                        "The": "audios/words/the.mp3", "vet": "audios/words/vet.mp3", "has": "audios/words/has.mp3",
+                        "ten": "audios/words/ten.mp3", "big": "audios/words/big.mp3", "eggs.": "audios/words/egg.mp3"
+                    }
+                },
+                {
+                    id: "s3",
+                    sentence: "I see a jet and a net on the web.",
+                    highlightWords: ["jet", "net", "web"],
+                    meaning: "Tớ nhìn thấy một chiếc máy bay phản lực và một cái lưới ở trên mạng nhện.",
+                    audioSentence: "audios/sentences/sentence_e3.mp3",
+                    wordAudioMap: {
+                        "I": "audios/words/i.mp3", "see": "audios/words/see.mp3", "a": "audios/words/a.mp3",
+                        "jet": "audios/words/jet.mp3", "and": "audios/words/and.mp3", "net": "audios/words/net.mp3",
+                        "on": "audios/words/on.mp3", "the": "audios/words/the.mp3", "web.": "audios/words/web.mp3"
+                    }
+                }
             ]
         };
 
-        // Hàm phát âm cốt lõi sử dụng thư viện SpeechSynthesis có sẵn của trình duyệt
-        function playAudio(text, onBoundaryWord = null, onEndCallback = null) {
-            window.speechSynthesis.cancel(); // Dừng ngay lập tức các âm thanh cũ tránh bị đè tiếng
-            
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = 'en-US'; 
-            utterance.rate = 0.82; // Tốc độ 0.82 là hoàn hảo cho học sinh tiểu học nghe rõ ending sounds
-
-            // Kỹ thuật Karaoke: Xác định từ nào đang được đọc dựa trên vị trí ký tự
-            if (onBoundaryWord) {
-                utterance.onboundary = (event) => {
-                    if (event.name === 'word') {
-                        // Trích xuất từ đang đọc dựa vào vị trí ký tự (charIndex) và độ dài (charLength)
-                        const wordBeingSpoken = text.substr(event.charIndex, event.charLength);
-                        onBoundaryWord(event.charIndex, wordBeingSpoken);
-                    }
-                };
+        // 3. Hàm phát âm thanh cốt lõi (Có xử lý hiệu ứng CSS kèm theo)
+        function playAudio(audioUrl, elementToVisual, activeClass) {
+            if (currentAudio) {
+                currentAudio.pause();
+                document.querySelectorAll('.word-card, .play-sentence-btn').forEach(el => el.classList.remove('playing'));
             }
 
-            if (onEndCallback) {
-                utterance.onend = onEndCallback;
-            }
+            // Để chạy thử độc lập khi chưa có file, hệ thống sẽ báo log thay vì crash ứng dụng
+            currentAudio = new Audio(audioUrl);
+            if (elementToVisual) elementToVisual.classList.add(activeClass);
 
-            window.speechSynthesis.speak(utterance);
-        }
-
-        function initApplication() {
-            document.getElementById('sub-title').innerText = "Bài học: " + currentLesson.lessonName;
-
-            // ---- RENDER PHẦN TỪ VỰNG ----
-            const wordsGrid = document.getElementById('words-grid');
-            currentLesson.words.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'word-card';
-                card.onclick = () => playAudio(item.text);
-                card.innerHTML = `
-                    <div class="word-text">${item.text}</div>
-                    <div class="word-ipa">${item.ipa}</div>
-                `;
-                wordsGrid.appendChild(card);
+            currentAudio.play().catch(err => {
+                console.log("Audio đang trỏ tới đường dẫn ảo: " + audioUrl + ". Bạn hãy cấu hình tệp âm thanh thực tế nhé!");
+                // Giả lập tắt hiệu ứng sau 1.2 giây nếu không tìm thấy file audio thật
+                setTimeout(() => { if (elementToVisual) elementToVisual.classList.remove(activeClass); }, 1200);
             });
 
-            // ---- RENDER PHẦN LUYỆN CÂU (TÍNH NĂNG CỰC MẠNH) ----
-            const sentencesList = document.getElementById('sentences-list');
-            currentLesson.sentences.forEach((item, sIndex) => {
-                const itemDiv = document.createElement('div');
-                itemDiv.className = 'sentence-item';
+            currentAudio.onended = () => {
+                if (elementToVisual) elementToVisual.classList.remove(activeClass);
+            };
+        }
 
-                // Tách câu thành mảng từ, giữ lại vị trí bắt đầu của mỗi từ để phục vụ Karaoke
-                const words = item.eng.split(" ");
-                let currentPos = 0;
+        // 4. Helper hàm giúp biến đổi chuỗi chữ, bọc thẻ riêng cho chữ 'e' hoặc 'E'
+        function highlightVowelE(word) {
+            return word.split('').map(char => {
+                return char.toLowerCase() === 'e' ? `<span class="letter-e">${char}</span>` : char;
+            }).join('');
+        }
+
+        // 5. Render phần tab từ vựng lên màn hình
+        function renderWords() {
+            const grid = document.getElementById('wordsGrid');
+            grid.innerHTML = lessonData.words.map(item => `
+                <div class="word-card" id="card-${item.id}" onclick="playAudio('${item.audio}', this, 'playing')">
+                    <img src="${item.image}" alt="${item.word}">
+                    <div class="word-text">${highlightVowelE(item.word)}</div>
+                    <div class="ipa-text">${item.ipa}</div>
+                    <div class="meaning-text">${item.meaning}</div>
+                    <div class="speaker-badge">🔊 Listen</div>
+                </div>
+            `).join('');
+        }
+
+        // 6. Render phần luyện đọc câu đa điểm tương tác từng từ
+        function renderSentences() {
+            const list = document.getElementById('sentencesList');
+            
+            list.innerHTML = lessonData.sentences.map(item => {
+                const wordsArray = item.sentence.split(' ');
                 
-                const spansHtml = words.map((word) => {
-                    const cleanWord = word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~?]/g,"");
-                    const startIdx = item.eng.indexOf(word, currentPos);
-                    currentPos = startIdx + word.length;
+                // Duyệt qua từng từ đơn lẻ trong câu để gắn sự kiện bấm phát âm thanh riêng biệt
+                const wordsRowHtml = wordsArray.map(word => {
+                    const cleanWord = word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").toLowerCase();
+                    const isTargetWord = item.highlightWords.includes(cleanWord);
+                    const classList = isTargetWord ? 'interactive-word word-has-e' : 'interactive-word';
+                    const audioUrl = item.wordAudioMap[word] || item.wordAudioMap[cleanWord] || '';
 
-                    // Mỗi từ bọc trong một thẻ span có thuộc tính data-start để đối chiếu dữ liệu âm thanh
-                    return `<span class="word-span" data-start="${startIdx}" onclick="event.stopPropagation(); playAudio('${cleanWord}')">${word}</span>`;
-                }).join(" ");
+                    return `
+                        <span class="${classList}" onclick="event.stopPropagation(); playAudio('${audioUrl}', null, null)">
+                            ${highlightVowelE(word)}
+                        </span>
+                    `;
+                }).join('');
 
-                itemDiv.innerHTML = `
-                    <div class="sentence-content">
-                        <div class="sentence-eng" id="eng-sentence-${sIndex}">${spansHtml}</div>
-                        <p class="sentence-vi">${sIndex + 1}. ${item.vi}</p>
-                    </div>
-                    <div class="control-btns">
-                        <!-- Nút Đọc mẫu mẫu -->
-                        <button class="app-btn btn-play" title="Nghe cô đọc mẫu" onclick="runKaraoke(${sIndex}, '${item.eng.replace(/'/g, "\\'")}')">
-                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                return `
+                    <div class="sentence-card">
+                        <button class="play-sentence-btn" onclick="playAudio('${item.audioSentence}', this, 'playing')">
+                            🔊 Listen Whole Sentence
                         </button>
+                        <div class="sentence-words-row">${wordsRowHtml}</div>
+                        <div class="sentence-meaning">${item.meaning}</div>
                     </div>
                 `;
-                sentencesList.appendChild(itemDiv);
-            });
+            }).join('');
         }
 
-        // Kỹ thuật đồng bộ chữ và tiếng (Karaoke Nhắc Chữ)
-        function runKaraoke(sentenceIndex, fullText) {
-            const container = document.getElementById(`eng-sentence-${sentenceIndex}`);
-            const spans = container.querySelectorAll('.word-span');
-            const playBtn = container.closest('.sentence-item').querySelector('.btn-play');
-            
-            playBtn.classList.add('wave-active');
+        // 7. Hàm chuyển đổi qua lại giữa Tab Từ vựng và Tab Câu
+        function switchTab(tabType) {
+            document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.className = 'tab-btn');
 
-            // Gọi hàm playAudio kèm sự kiện nhận diện vị trí từ đang phát âm
-            playAudio(fullText, (charIndex, word) => {
-                // Duyệt qua các từ, từ nào trùng khớp vị trí thì bật class phát sáng
-                spans.forEach(span => {
-                    const spanStart = parseInt(span.getAttribute('data-start'));
-                    // Nếu vị trí của từ nằm trong tầm phát âm hiện tại
-                    if (spanStart === charIndex || (charIndex > spanStart && charIndex < spanStart + span.innerText.length)) {
-                        span.classList.add('highlight-active');
-                    } else {
-                        span.classList.remove('highlight-active');
-                    }
-                });
-            }, () => {
-                // Khi kết thúc bài đọc, tắt toàn bộ hiệu ứng phát sáng
-                spans.forEach(span => span.classList.remove('highlight-active'));
-                playBtn.classList.remove('wave-active');
-            });
+            if (tabType === 'words') {
+                document.getElementById('sectionWords').classList.add('active');
+                document.getElementById('tabWords').classList.add('active-words');
+            } else {
+                document.getElementById('sectionSentences').classList.add('active');
+                document.getElementById('tabSentences').classList.add('active-sentences');
+            }
+            if (currentAudio) currentAudio.pause();
         }
 
-        // Khởi chạy ứng dụng khi tải trang thành công
-        window.onload = initApplication;
+        // Khởi động render dữ liệu khi trang web được tải xong
+        window.onload = () => {
+            renderWords();
+            renderSentences();
+        };
     </script>
 </body>
 </html>

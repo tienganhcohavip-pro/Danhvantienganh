@@ -97,12 +97,12 @@
         /* --- LAYOUT CỐ ĐỊNH CHUẨN: 6 HÀNG x 4 CỘT --- */
         .words-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* Đảm bảo 4 từ một hàng */
+            grid-template-columns: repeat(4, 1fr); /* Đảm bảo luôn cố định đúng 4 cột một hàng */
             gap: 18px;
             margin-top: 10px;
         }
 
-        /* Hỗ trợ hiển thị trên di động nhỏ */
+        /* Hỗ trợ hiển thị trên màn hình nhỏ di động */
         @media (max-width: 650px) {
             .words-grid {
                 grid-template-columns: repeat(2, 1fr); 
@@ -113,7 +113,7 @@
             background: white;
             border: 3px solid #E2ECEF;
             border-radius: 24px;
-            padding: 15px 12px;
+            padding: 22px 12px;
             text-align: center;
             cursor: pointer;
             box-shadow: 0 4px 6px rgba(0,0,0,0.02);
@@ -121,7 +121,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
+            min-height: 140px; /* Độ cao đồng đều cho các card */
         }
 
         .word-card:hover {
@@ -135,46 +136,36 @@
             background-color: #FFEBEF;
         }
 
-        /* --- KHUNG CHỨA ẢNH TỪ MẠNG --- */
-        .word-image-container {
-            width: 100%;
-            height: 110px; /* Layout cân đối đều tăm tắp */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 12px;
-            background-color: #F8F9FA;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid #E2ECEF;
-        }
-
-        .word-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; /* Giữ nguyên tỷ lệ, không làm méo hình */
-            padding: 6px;
-        }
-
-        /* Chữ hiển thị từ vựng */
+        /* Chữ hiển thị từ vựng tiếng Anh chính */
         .word-text {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             font-weight: bold;
             letter-spacing: 0.5px;
             color: #000;
+            line-height: 1.2;
         }
 
-        /* Thẻ CSS bôi đỏ nguyên âm 'a' */
+        /* Định dạng bôi đỏ nguyên âm 'a' */
         .highlight-vowel {
             color: var(--vowel-red) !important;
             font-weight: 800;
         }
 
+        /* Phiên âm IPA */
         .ipa-text {
             font-size: 1rem;
-            color: #666;
+            color: #4EA8DE;
             font-style: italic;
-            margin-top: 3px;
+            margin-top: 2px;
+            font-weight: 500;
+        }
+
+        /* Định dạng phần dịch nghĩa Tiếng Việt (chữ nhỏ hơn, nằm phía dưới) */
+        .meaning-text {
+            font-size: 0.95rem;
+            color: #6C757D; /* Màu xám nhẹ nhàng tinh tế */
+            margin-top: 8px;
+            font-weight: 500;
         }
 
         /* --- PHẦN 2: LUYỆN ĐỌC CÂU (SENTENCES) --- */
@@ -251,7 +242,7 @@
 
     <header>
         <h1>Short Vowel a /æ/</h1>
-        <p>24 Từ vựng nâng cao & 3 Câu cuối trang 3 🌟</p>
+        <p>24 Từ vựng (Kèm Nghĩa Oxford) & 3 Câu cuối trang 3 🌟</p>
     </header>
 
     <div class="tab-menu">
@@ -274,39 +265,39 @@
     </div>
 
     <script>
-        // Danh sách từ vựng đã được tích hợp link ảnh trực tuyến miễn phí, đồng bộ và tải nhanh ổn định
+        // DATA NỘI DUNG CHUẨN XÁC THEO TỪ ĐIỂN OXFORD
         const lesson2Data = {
             words: [
                 // Hàng 1
-                { word: "ram", ipa: "/ræm/", image: "https://img.icons8.com/emoji/150/ram-emoji.png" }, 
-                { word: "jam", ipa: "/dʒæm/", image: "https://img.icons8.com/emoji/150/jar-emoji.png" }, 
-                { word: "dam", ipa: "/dæm/", image: "https://img.icons8.com/external-flat-icons-inspirational-company/150/external-Dam-eco-energy-flat-icons-inspirational-company.png" }, 
-                { word: "yam", ipa: "/jæm/", image: "https://img.icons8.com/color/150/sweet-potato.png" },
+                { word: "ram", ipa: "/ræm/", meaning: "con cừu đực" }, 
+                { word: "jam", ipa: "/dʒæm/", meaning: "mứt quả" }, 
+                { word: "dam", ipa: "/dæm/", meaning: "đập chắn nước" }, 
+                { word: "yam", ipa: "/jæm/", meaning: "khoai mỡ / khoai lang" },
                 // Hàng 2
-                { word: "fan", ipa: "/fæn/", image: "https://img.icons8.com/color/150/electric-fan.png" }, 
-                { word: "man", ipa: "/mæn/", image: "https://img.icons8.com/emoji/150/man-beard.png" }, 
-                { word: "pan", ipa: "/pæn/", image: "https://img.icons8.com/color/150/frying-pan.png" }, 
-                { word: "can", ipa: "/kæn/", image: "https://img.icons8.com/color/150/soda-can.png" },
+                { word: "fan", ipa: "/fæn/", meaning: "cái quạt" }, 
+                { word: "man", ipa: "/mæn/", meaning: "người đàn ông" }, 
+                { word: "pan", ipa: "/pæn/", meaning: "cái chảo rán" }, 
+                { word: "can", ipa: "/kæn/", meaning: "cái lon / hộp thiếc" },
                 // Hàng 3
-                { word: "dad", ipa: "/dæd/", image: "https://img.icons8.com/color/150/fatherhood.png" }, 
-                { word: "pad", ipa: "/pæd/", image: "https://img.icons8.com/color/150/notepad.png" }, 
-                { word: "bag", ipa: "/bæg/", image: "https://img.icons8.com/color/150/backpack.png" }, 
-                { word: "rag", ipa: "/ræg/", image: "https://img.icons8.com/color/150/rag.png" },
+                { word: "dad", ipa: "/dæd/", meaning: "bố / ba" }, 
+                { word: "pad", ipa: "/pæd/", meaning: "tập giấy / đệm lót" }, 
+                { word: "bag", ipa: "/bæg/", meaning: "cặp sách / cái túi" }, 
+                { word: "rag", ipa: "/ræg/", meaning: "vải rách / giẻ lau" },
                 // Hàng 4
-                { word: "tap", ipa: "/tæp/", image: "https://img.icons8.com/emoji/150/water-faucet-emoji.png" }, 
-                { word: "nap", ipa: "/næp/", image: "https://img.icons8.com/emoji/150/zzz-emoji.png" }, 
-                { word: "map", ipa: "/mæp/", image: "https://img.icons8.com/emoji/150/world-map-emoji.png" }, 
-                { word: "cap", ipa: "/kæp/", image: "https://img.icons8.com/emoji/150/billed-cap-emoji.png" },
+                { word: "tap", ipa: "/tæp/", meaning: "vòi nước" }, 
+                { word: "nap", ipa: "/næp/", meaning: "giấc ngủ ngắn" }, 
+                { word: "map", ipa: "/mæp/", meaning: "bản đồ" }, 
+                { word: "cap", ipa: "/kæp/", meaning: "mũ lưỡi trai" },
                 // Hàng 5
-                { word: "rat", ipa: "/ræt/", image: "https://img.icons8.com/emoji/150/rat-emoji.png" }, 
-                { word: "bat", ipa: "/bæt/", image: "https://img.icons8.com/emoji/150/bat-emoji.png" }, 
-                { word: "hat", ipa: "/hæt/", image: "https://img.icons8.com/emoji/150/top-hat-emoji.png" }, 
-                { word: "mat", ipa: "/mæn/", image: "https://img.icons8.com/color/150/yoga-mat.png" },
+                { word: "rat", ipa: "/ræt/", meaning: "con chuột cống" }, 
+                { word: "bat", ipa: "/bæt/", image: "images/bat.png", meaning: "con dơi / cái chày" }, 
+                { word: "hat", ipa: "/hæt/", meaning: "cái mũ (có vành)" }, 
+                { word: "mat", ipa: "/mæt/", meaning: "tấm thảm / chiếc chiếu" },
                 // Hàng 6
-                { word: "van", ipa: "/væn/", image: "https://img.icons8.com/emoji/150/minibus-emoji.png" }, 
-                { word: "sad", ipa: "/sæd/", image: "https://img.icons8.com/emoji/150/loudly-crying-face-emoji.png" }, 
-                { word: "tag", ipa: "/tæg/", image: "https://img.icons8.com/emoji/150/label-emoji.png" }, 
-                { word: "lap", ipa: "/læp/", image: "https://img.icons8.com/color/150/laptop.png" }
+                { word: "van", ipa: "/væn/", meaning: "xe tải nhỏ / xe bán tải" }, 
+                { word: "sad", ipa: "/sæd/", meaning: "buồn bã" }, 
+                { word: "tag", ipa: "/tæg/", meaning: "nhãn mác / thẻ giá" }, 
+                { word: "lap", ipa: "/læp/", meaning: "vòng chạy / lòng (đùi)" }
             ],
             sentences: [
                 { id: "s1", sentence: "A ram is on the dam.", meaning: "Một con cừu đực ở trên con đập." },
@@ -317,7 +308,7 @@
 
         // BỘ MÁY PHÁT ÂM TIẾNG ANH CHUẨN MỸ ĐỘC LẬP
         function playSound(textToRead, element, activeClass) {
-            window.speechSynthesis.cancel(); // Tắt âm thanh cũ ngay lập tức tránh chồng chéo âm
+            window.speechSynthesis.cancel(); // Tắt ngay âm thanh cũ để tránh chồng chéo khi bấm nhanh
             
             document.querySelectorAll('.word-card, .play-all-btn').forEach(el => el.classList.remove('playing'));
 
@@ -325,11 +316,12 @@
                 element.classList.add(activeClass);
             }
 
+            // Làm sạch văn bản để tránh lỗi phát âm ký tự đặc biệt
             let cleanText = textToRead.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()\/]/g, "");
             let utterance = new SpeechSynthesisUtterance(cleanText);
             
             utterance.lang = 'en-US'; 
-            utterance.rate = 0.8; // THIẾT LẬP TỐC ĐỘ ĐỌC CÂU CHẬM RÃI 0.8
+            utterance.rate = 0.8; // THIẾT LẬP TỐC ĐỘ ĐỌC 0.8 CHẬM RÃI, RÕ RÀNG
 
             utterance.onend = () => {
                 if (element) {
@@ -350,23 +342,19 @@
             }).join('');
         }
 
-        // ĐỔ NỘI DUNG TỪ VỰNG LÊN GRID (SỬ DỤNG ẢNH THẬT ONLINE)
+        // ĐỔ NỘI DUNG TỪ VỰNG LÊN GRID (CÓ NGHĨA TIẾNG VIỆT PHÍA DƯỚI)
         function loadWords() {
             const grid = document.getElementById('wordsGrid');
             grid.innerHTML = lesson2Data.words.map(item => `
                 <div class="word-card" onclick="playSound('${item.word}', this, 'playing')">
-                    <div class="word-image-container">
-                        <img src="${item.image}" alt="${item.word}" class="word-image" onerror="this.removeAttribute('src'); this.parentNode.innerText='🖼️'">
-                    </div>
-                    <div>
-                        <div class="word-text">${highlightLetterA(item.word)}</div>
-                        <div class="ipa-text">${item.ipa}</div>
-                    </div>
+                    <div class="word-text">${highlightLetterA(item.word)}</div>
+                    <div class="ipa-text">${item.ipa}</div>
+                    <div class="meaning-text">${item.meaning}</div>
                 </div>
             `).join('');
         }
 
-        // ĐỔ NỘI DUNG LUYỆN ĐỌC CÂU
+        // ĐỔ NỘI DUNG LUYỆN ĐỌC CÂU ĐA ĐIỂM TƯƠNG TÁC
         function loadSentences() {
             const list = document.getElementById('sentencesList');
             
@@ -393,7 +381,7 @@
             }).join('');
         }
 
-        // CHUYỂN ĐỔI TAB QUA LẠI
+        // CHUYỂN ĐỔI TAB QUA LẠI GIỮA TỪ VỰNG VÀ ĐỌC CÂU
         function changeTab(tabName) {
             document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));

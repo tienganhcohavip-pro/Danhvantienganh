@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bé Học Tiếng Anh - Short Vowel a</title>
+    <title>BÉ LUYỆN ĐÁNH VẦN TIẾNG ANH - Lesson 1</title>
     <style>
-        /* --- THIẾT KẾ ĐỒNG BỘ, THÂN THIỆN VỚI TRẺ EM --- */
+        /* --- HỆ MÀU TRANG NHÃ CHUẨN APP GIÁO DỤC TIỂU HỌC --- */
         :root {
-            --bg-app: #F5FCFF;
-            --header-bg: #FFD166;
-            --text-main: #2B2D42;
-            --vowel-red: #FF0000; /* Bôi đỏ rực rỡ giúp bé tập trung vào nguyên âm */
-            --btn-word: #4EA8DE;
-            --btn-sentence: #FF9F43;
-            --border-color: #E2ECEF;
+            --bg-app: #F8FAFC;         /* Màu nền tổng thể xám trắng trang nhã, dịu mắt */
+            --header-bg: #E0F2FE;      /* Màu nền tiêu đề xanh ngọc thanh lịch, cao cấp */
+            --text-brand: #0369A1;     /* Màu xanh dương đậm làm nổi bật thương hiệu */
+            --text-main: #1E293B;      /* Màu chữ chính */
+            --vowel-red: #FF0000;      /* Bôi đỏ rực rỡ để nhận diện nguyên âm */
+            --btn-word: #38BDF8;
+            --btn-sentence: #FB923C;
+            --card-bg: #FFFFFF;
         }
 
         * {
@@ -29,33 +30,50 @@
             padding-bottom: 60px;
         }
 
+        /* --- PHẦN TIÊU ĐỀ ĐƯỢC CHỈNH SỬA THEO YÊU CẦU --- */
         header {
             background-color: var(--header-bg);
-            padding: 20px;
+            padding: 25px 20px;
             text-align: center;
-            border-bottom-left-radius: 30px;
-            border-bottom-right-radius: 30px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            border-bottom-left-radius: 32px;
+            border-bottom-right-radius: 32px;
+            box-shadow: 0 4px 15px rgba(3, 105, 161, 0.08);
         }
 
-        header h1 {
-            color: #118AB2;
-            font-size: 2.2rem;
-            margin-bottom: 5px;
+        /* Mỗi câu 1 dòng - Phân cấp thị giác rõ ràng */
+        header .main-title {
+            color: var(--text-brand);
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            text-shadow: 1px 1px 0px #FFF;
         }
 
-        header p {
-            color: #073B4C;
+        header .sub-title {
+            color: #0E7490;
+            font-size: 1.2rem;
             font-weight: 600;
-            font-size: 1.1rem;
+            margin-bottom: 12px;
         }
 
-        /* Thanh Chuyển Tab Lớn Dễ Bấm */
+        header .lesson-title {
+            display: inline-block;
+            background-color: #BAE6FD;
+            color: #0369A1;
+            padding: 6px 20px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 12px;
+            border: 2px solid #7DD3FC;
+        }
+
+        /* Thanh Chuyển Tab Học Tập */
         .tab-menu {
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin: 25px auto;
+            margin: 30px auto;
             max-width: 600px;
             padding: 0 15px;
         }
@@ -63,21 +81,21 @@
         .tab-btn {
             flex: 1;
             padding: 15px;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: bold;
-            border: 2px solid #BDD7EE;
+            border: 2px solid #CBD5E1;
             border-radius: 20px;
-            background-color: #E1EDF9;
-            color: #555;
+            background-color: #E2E8F0;
+            color: #475569;
             cursor: pointer;
             transition: all 0.2s;
         }
 
         .tab-btn.active {
-            background-color: #06D6A0;
+            background-color: #0EA5E9;
             color: white;
-            border-color: #04b386;
-            box-shadow: 0 5px 15px rgba(6, 214, 160, 0.4);
+            border-color: #0284C7;
+            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
         }
 
         .container {
@@ -94,7 +112,7 @@
             display: block;
         }
 
-        /* --- LAYOUT 6 HÀNG x 4 CỘT CỐ ĐỊNH (TRANG 3) --- */
+        /* --- LAYOUT 6 HÀNG x 4 CỘT CỐ ĐỊNH TÔN NỀN CHÍNH --- */
         .words-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -102,7 +120,6 @@
             margin-top: 10px;
         }
 
-        /* Tối ưu hiển thị trên màn hình máy tính bảng/điện thoại nằm ngang */
         @media (max-width: 768px) {
             .words-grid {
                 grid-template-columns: repeat(2, 1fr); 
@@ -110,13 +127,13 @@
         }
 
         .word-card {
-            background: white;
-            border: 3px solid #E2ECEF;
+            background: var(--card-bg);
+            border: 3px solid #E2E8F0;
             border-radius: 24px;
             padding: 25px 15px;
             text-align: center;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
             transition: all 0.2s;
             display: flex;
             flex-direction: column;
@@ -128,13 +145,12 @@
         .word-card:hover {
             transform: translateY(-5px);
             border-color: var(--btn-word);
-            box-shadow: 0 6px 12px rgba(78, 168, 222, 0.2);
+            box-shadow: 0 8px 16px rgba(56, 189, 248, 0.15);
         }
 
-        /* Hiệu ứng đổi màu viền khi từ đang được đọc */
         .word-card.playing {
             border-color: var(--vowel-red);
-            background-color: #FFEBEF;
+            background-color: #FEF2F2;
             animation: pulse 0.5s infinite alternate;
         }
 
@@ -143,38 +159,34 @@
             to { transform: scale(1.02); }
         }
 
-        /* Chữ hiển thị từ vựng tiếng Anh lớn, rõ ràng */
         .word-text {
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             font-weight: bold;
             letter-spacing: 1px;
             color: #000;
         }
 
-        /* Thẻ CSS bôi đỏ nguyên âm 'a' */
         .highlight-vowel {
             color: var(--vowel-red) !important;
             font-weight: 800;
         }
 
-        /* Phiên âm quốc tế IPA */
         .ipa-text {
             font-size: 1.1rem;
-            color: #4EA8DE;
+            color: #0284C7;
             font-style: italic;
             margin-top: 3px;
             font-weight: 500;
         }
 
-        /* Dịch nghĩa Oxford chuẩn */
         .meaning-text {
             font-size: 1rem;
-            color: #6C757D;
+            color: #64748B;
             margin-top: 10px;
             font-weight: 500;
         }
 
-        /* --- PHẦN BÀI TẬP LUYỆN ĐỌC CÂU (TRANG 4) --- */
+        /* --- PHẦN BÀI TẬP LUYỆN ĐỌC CÂU --- */
         .sentence-list {
             display: flex;
             flex-direction: column;
@@ -182,15 +194,14 @@
         }
 
         .sentence-card {
-            background: white;
-            border: 3px solid #DFF6FF;
+            background: var(--card-bg);
+            border: 3px solid #E0F2FE;
             border-radius: 28px;
             padding: 30px;
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
         }
 
-        /* Nút đọc nguyên câu */
         .play-all-btn {
             background-color: var(--btn-sentence);
             color: white;
@@ -202,20 +213,19 @@
             cursor: pointer;
             margin-bottom: 20px;
             transition: all 0.2s;
-            box-shadow: 0 4px 10px rgba(255, 159, 67, 0.3);
+            box-shadow: 0 4px 12px rgba(251, 146, 60, 0.3);
         }
 
         .play-all-btn:hover {
-            background-color: #e68a2e;
+            background-color: #EA580C;
             transform: scale(1.05);
         }
 
         .play-all-btn.playing {
-            background-color: #06D6A0;
-            box-shadow: 0 4px 10px rgba(6, 214, 160, 0.3);
+            background-color: #10B981;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
         }
 
-        /* Hàng chứa các từ đơn lẻ trong câu */
         .sentence-words-row {
             display: flex;
             flex-wrap: wrap;
@@ -224,35 +234,33 @@
             margin: 20px 0;
         }
 
-        /* Từng từ trong câu có thể click để nghe lẻ */
         .clickable-word {
             display: inline-block;
             padding: 8px 18px;
             font-size: 1.8rem;
             font-weight: 600;
-            background-color: #F0F4F8;
+            background-color: #F1F5F9;
             border-radius: 16px;
             cursor: pointer;
-            border: 2px solid #D0D8e0;
+            border: 2px solid #E2E8F0;
             transition: all 0.1s;
             user-select: none;
         }
 
         .clickable-word:hover {
-            background-color: #E1E9F0;
+            background-color: #E2E8F0;
             border-color: var(--btn-word);
-            color: var(--btn-word);
+            color: #0284C7;
         }
 
         .clickable-word.playing-word {
-            background-color: #FFEBEF;
+            background-color: #FEF2F2;
             border-color: var(--vowel-red);
         }
 
-        /* Nghĩa của câu dịch */
         .sentence-translation {
             font-size: 1.2rem;
-            color: #555;
+            color: #475569;
             font-style: italic;
             margin-top: 15px;
             font-weight: 500;
@@ -261,37 +269,38 @@
 </head>
 <body>
 
+    <!-- THIẾT KẾ TIÊU ĐỀ CHUẨN CỦA CÔ HÀ -->
     <header>
-        <h1>Bé Luyện Đánh Vần Tiếng Anh</h1>
-        <p>Short Vowel a /æ/ • Tốc độ đọc chậm 0.7 🐢</p>
+        <div class="main-title">BÉ LUYỆN ĐÁNH VẦN TIẾNG ANH</div>
+        <div class="sub-title">Tiếng anh cô Hà - Nhịp cầu nhỏ bước ra thế giới</div>
+        <div class="lesson-title">Lesson 1: Nguyên âm a</div>
     </header>
 
     <div class="tab-menu">
-        <button class="tab-btn active" id="tabWords" onclick="changeTab('words')">🔤 Trang 3: 24 Từ Vựng</button>
-        <button class="tab-btn" id="tabSentences" onclick="changeTab('sentences')">📖 Trang 4: 3 Câu Luyện Đọc</button>
+        <button class="tab-btn active" id="tabWords" onclick="changeTab('words')">🔤 24 Từ Vựng Đánh Vần</button>
+        <button class="tab-btn" id="tabSentences" onclick="changeTab('sentences')">📖 Bài Tập Luyện Đọc Câu</button>
     </div>
 
     <div class="container">
         
-        <!-- TAP 1: 24 TỪ VỰNG TRANG 3 -->
+        <!-- TAP 1: 24 TỪ VỰNG -->
         <section id="sectionWords" class="content-section active">
             <div class="words-grid" id="wordsGrid">
-                <!-- Data nạp tự động từ JS -->
+                <!-- Data nạp tự động -->
             </div>
         </section>
 
-        <!-- TAB 2: 3 CÂU CUỐI TRANG 4 -->
+        <!-- TAB 2: CÁC CÂU LUYỆN ĐỌC -->
         <section id="sectionSentences" class="content-section">
             <div class="sentence-list" id="sentencesList">
-                <!-- Data nạp tự động từ JS -->
+                <!-- Data nạp tự động -->
             </div>
         </section>
 
     </div>
 
     <script>
-        // CƠ SỞ DỮ LIỆU CHUẨN OXFORD
-        const lesson2Data = {
+        const lesson1Data = {
             words: [
                 // Hàng 1
                 { word: "ram", ipa: "/ræm/", meaning: "con cừu đực" }, 
@@ -331,27 +340,23 @@
             ]
         };
 
-        // BỘ MÁY PHÁT ÂM THÔNG MINH - TỐC ĐỘ 0.7 CHUẨN SƯ PHẠM
+        // PHÁT ÂM CHUẨN TỐC ĐỘ SƯ PHẠM 0.7
         function playSound(textToRead, element, activeClass) {
-            // Tắt âm thanh đang chạy trước đó ngay lập tức để không bị đè tiếng
             window.speechSynthesis.cancel(); 
             
-            // Xóa trạng thái kích hoạt cũ trên giao diện
             document.querySelectorAll('.word-card, .play-all-btn, .clickable-word').forEach(el => {
                 el.classList.remove('playing', 'playing-word');
             });
 
-            // Nếu có phần tử tương tác, thêm class để tạo hiệu ứng đổi màu viền cho bé biết từ nào đang đọc
             if (element) {
                 element.classList.add(activeClass);
             }
 
-            // Loại bỏ ký tự đặc biệt để bộ đọc không bị vấp
             let cleanText = textToRead.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()\/]/g, "");
             let utterance = new SpeechSynthesisUtterance(cleanText);
             
             utterance.lang = 'en-US'; 
-            utterance.rate = 0.7; // CẤU HÌNH TỐC ĐỘ ĐỌC CHẬM 0.7 THEO YÊU CẦU
+            utterance.rate = 0.7; // Tốc độ 0.7 chuẩn cho trẻ nhỏ nghe rõ âm đuôi
 
             utterance.onend = () => {
                 if (element) {
@@ -362,7 +367,7 @@
             window.speechSynthesis.speak(utterance);
         }
 
-        // TỰ ĐỘNG BÔI ĐỎ CHỮ A ĐỂ TĂNG NHẬN DIỆN MẶT CHỮ (PHONICS)
+        // BÔI ĐỎ NGUYÊN ÂM A
         function highlightLetterA(text) {
             return text.split('').map(char => {
                 if (char.toLowerCase() === 'a') {
@@ -372,10 +377,9 @@
             }).join('');
         }
 
-        // TẠO THẺ TỪ VỰNG TRANG 3
         function loadWords() {
             const grid = document.getElementById('wordsGrid');
-            grid.innerHTML = lesson2Data.words.map(item => `
+            grid.innerHTML = lesson1Data.words.map(item => `
                 <div class="word-card" onclick="playSound('${item.word}', this, 'playing')">
                     <div class="word-text">${highlightLetterA(item.word)}</div>
                     <div class="ipa-text">${item.ipa}</div>
@@ -384,16 +388,11 @@
             `).join('');
         }
 
-        // TẠO KHU VỰC LUYỆN ĐỌC CÂU TRANG 4 (ĐỌC ĐA ĐIỂM)
         function loadSentences() {
             const list = document.getElementById('sentencesList');
-            
-            list.innerHTML = lesson2Data.sentences.map(item => {
+            list.innerHTML = lesson1Data.sentences.map(item => {
                 const wordsArray = item.sentence.split(' ');
-                
-                // Tách từng từ đơn trong câu để gán giọng đọc riêng biệt khi bé chạm tay vào từ đó
                 const wordsRowHtml = wordsArray.map(word => {
-                    // Làm sạch dấu chấm, dấu phẩy ở cuối từ nếu có
                     const cleanWord = word.replace(/[.,]/g, "");
                     return `
                         <span class="clickable-word" onclick="event.stopPropagation(); playSound('${cleanWord}', this, 'playing-word')">
@@ -414,11 +413,10 @@
             }).join('');
         }
 
-        // HÀM CHUYỂN TAB HỌC TẬP TRỰC QUAN
         function changeTab(tabName) {
             document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            window.speechSynthesis.cancel(); // Dừng đọc khi chuyển trang
+            window.speechSynthesis.cancel(); 
 
             if (tabName === 'words') {
                 document.getElementById('sectionWords').classList.add('active');
@@ -429,7 +427,6 @@
             }
         }
 
-        // KHỞI CHẠY KHI TẢI TRANG
         window.onload = () => {
             loadWords();
             loadSentences();

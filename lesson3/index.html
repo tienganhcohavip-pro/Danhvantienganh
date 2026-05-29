@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BÉ LUYỆN ĐÁNH VẦN TIẾNG ANH - Lesson 3</title>
+    <style>
+        /* --- HỆ MÀU TRANG NHÃ CHUẨN APP GIÁO DỤC TIỂU HỌC --- */
+        :root {
+            --bg-app: #F8FAFC;         /* Màu nền xám trắng dịu mắt, chống mỏi mắt cho bé */
+            --header-bg: #E0F2FE;      /* Màu nền tiêu đề xanh ngọc thanh lịch */
+            --text-brand: #0369A1;     /* Màu xanh dương đậm làm nổi bật thương hiệu */
+            --text-main: #1E293B;      /* Màu chữ văn bản chính */
+            --vowel-red: #FF0000;      /* Bôi đỏ rực rỡ để nhận diện nguyên âm /i/ và /o/ */
+            --btn-word: #38BDF8;
+            --btn-sentence: #FB923C;
+            --card-bg: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-app);
+            color: var(--text-main);
+            padding-bottom: 60px;
+        }
+
+        /* --- PHẦN TIÊU ĐỀ PHÂN CẤP THỊ GIÁC (MỖI CÂU 1 DÒNG) --- */
+        header {
+            background-color: var(--header-bg);
+            padding: 25px 20px;
+            text-align: center;
+            border-bottom-left-radius: 32px;
+            border-bottom-right-radius: 32px;
+            box-shadow: 0 4px 15px rgba(3, 105, 161, 0.08);
+        }
+
+        header .main-title {
+            color: var(--text-brand);
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            text-shadow: 1px 1px 0px #FFF;
+        }
+
+        header .sub-title {
+            color: #0E7490;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        header .lesson-title {
+            display: inline-block;
+            background-color: #BAE6FD;
+            color: #0369A1;
+            padding: 6px 20px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 12px;
+            border: 2px solid #7DD3FC;
+        }
+
+        /* Thanh Chuyển Tab To Rõ Ràng */
+        .tab-menu {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px auto;
+            max-width: 600px;
+            padding: 0 15px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 15px;
+            font-size: 1.15rem;
+            font-weight: bold;
+            border: 2px solid #CBD5E1;
+            border-radius: 20px;
+            background-color: #E2E8F0;
+            color: #475569;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background-color: #0EA5E9;
+            color: white;
+            border-color: #0284C7;
+            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        /* --- BỐ CỤC LƯỚI CỐ ĐỊNH 6 HÀNG X 4 CỘT --- */
+        .words-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .words-grid {
+                grid-template-columns: repeat(2, 1fr); 
+            }
+        }
+
+        .word-card {
+            background: var(--card-bg);
+            border: 3px solid #E2E8F0;
+            border-radius: 24px;
+            padding: 25px 15px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 140px;
+        }
+
+        .word-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--btn-word);
+            box-shadow: 0 8px 16px rgba(56, 189, 248, 0.15);
+        }
+
+        .word-card.playing {
+            border-color: var(--vowel-red);
+            background-color: #FEF2F2;
+            animation: pulse 0.5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.02); }
+        }
+
+        .word-text {
+            font-size: 2.6rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #000;
+        }
+
+        .highlight-vowel {
+            color: var(--vowel-red) !important;
+            font-weight: 800;
+        }
+
+        .ipa-text {
+            font-size: 1.1rem;
+            color: #0284C7;
+            font-style: italic;
+            margin-top: 3px;
+            font-weight: 500;
+        }
+
+        .meaning-text {
+            font-size: 1rem;
+            color: #64748B;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        /* --- KHU VỰC BÀI TẬP LUYỆN ĐỌC CÂU --- */
+        .sentence-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .sentence-card {
+            background: var(--card-bg);
+            border: 3px solid #E0F2FE;
+            border-radius: 28px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+
+        .play-all-btn {
+            background-color: var(--btn-sentence);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(251, 146, 60, 0.3);
+        }
+
+        .play-all-btn:hover {
+            background-color: #EA580C;
+            transform: scale(1.05);
+        }
+
+        .play-all-btn.playing {
+            background-color: #10B981;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .sentence-words-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px 15px;
+            margin: 20px 0;
+        }
+
+        .clickable-word {
+            display: inline-block;
+            padding: 8px 18px;
+            font-size: 1.9rem;
+            font-weight: 600;
+            background-color: #F1F5F9;
+            border-radius: 16px;
+            cursor: pointer;
+            border: 2px solid #E2E8F0;
+            transition: all 0.1s;
+            user-select: none;
+        }
+
+        .clickable-word:hover {
+            background-color: #E2E8F0;
+            border-color: var(--btn-word);
+            color: #0284C7;
+        }
+
+        .clickable-word.playing-word {
+            background-color: #FEF2F2;
+            border-color: var(--vowel-red);
+        }
+
+        .sentence-translation {
+            font-size: 1.2rem;
+            color: #475569;
+            font-style: italic;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="main-title">BÉ LUYỆN ĐÁNH VẦN TIẾNG ANH</div>
+        <div class="sub-title">Tiếng anh cô Hà - Nhịp cầu nhỏ bước ra thế giới</div>
+        <div class="lesson-title">Lesson 3: Nguyên âm ngắn /i/, /o/</div>
+    </header>
+
+    <div class="tab-menu">
+        <button class="tab-btn active" id="tabWords" onclick="changeTab('words')">🔤 24 Từ Vựng Đánh Vần</button>
+        <button class="tab-btn" id="tabSentences" onclick="changeTab('sentences')">📖 3 Câu Luyện Đọc</button>
+    </div>
+
+    <div class="container">
+        
+        <section id="sectionWords" class="content-section active">
+            <div class="words-grid" id="wordsGrid">
+                </div>
+        </section>
+
+        <section id="sectionSentences" class="content-section">
+            <div class="sentence-list" id="sentencesList">
+                </div>
+        </section>
+
+    </div>
+
+    <script>
+        // SỐ HÓA TOÀN BỘ DỮ LIỆU CHUẨN THEO TỪ ĐIỂN OXFORD
+        const lesson3Data = {
+            words: [
+                // Hàng 1 (Nhóm vần -in)
+                { word: "pin", ipa: "/pɪn/", meaning: "cái ghim cài, pin" }, 
+                { word: "fin", ipa: "/fɪn/", meaning: "vây cá" }, 
+                { word: "bin", ipa: "/bɪn/", meaning: "thùng chứa rác" }, 
+                { word: "win", ipa: "/wɪn/", meaning: "chiến thắng, đoạt giải" },
+                // Hàng 2 (Nhóm vần -ig)
+                { word: "big", ipa: "/bɪɡ/", meaning: "to lớn, vĩ đại" }, 
+                { word: "wig", ipa: "/wɪɡ/", meaning: "bộ tóc giả" }, 
+                { word: "fig", ipa: "/fɪɡ/", meaning: "quả sung, quả vả" }, 
+                { word: "dig", ipa: "/dɪɡ/", meaning: "đào bới, cuốc đất" },
+                // Hàng 3 (Nhóm vần -it / -ix)
+                { word: "hit", ipa: "/hɪt/", meaning: "đánh, đánh trúng" }, 
+                { word: "pit", ipa: "/hɪt/", meaning: "hạt quả cứng (như mơ, mận)" }, 
+                { word: "six", ipa: "/sɪks/", meaning: "số sáu" }, 
+                { word: "mix", ipa: "/mɪks/", meaning: "trộn lẫn, hòa lẫn" },
+                // Hàng 4 (Nhóm vần phối hợp tự do /ɒ/)
+                { word: "fox", ipa: "/fɒks/", meaning: "con cáo" }, 
+                { word: "log", ipa: "/lɒɡ/", meaning: "khúc gỗ mới đốn" }, 
+                { word: "ox", ipa: "/ɒks/", meaning: "con bò đực" }, 
+                { word: "rod", ipa: "/rɒd/", meaning: "cần câu, chiếc gậy" },
+                // Hàng 5 (Nhóm vần -ot)
+                { word: "pot", ipa: "/pɒt/", meaning: "cái nồi, cái hũ" }, 
+                { word: "cot", ipa: "/kɒt/", meaning: "giường cũi trẻ em / giường gấp" }, 
+                { word: "hot", ipa: "/hɒt/", meaning: "nóng bức, cay nồng" }, 
+                { word: "dot", ipa: "/dɒt/", meaning: "chấm nhỏ, điểm tròn" },
+                // Hàng 6 (Nhóm vần -op)
+                { word: "pop", ipa: "/pɒp/", meaning: "tiếng nổ bốp / làm vỡ bong bóng" }, 
+                { word: "hop", ipa: "/hɒp/", meaning: "nhảy lò cò, nhảy ngắn" }, 
+                { word: "mop", ipa: "/mɒp/", meaning: "chổi lau nhà" }, 
+                { word: "top", ipa: "/tɒp/", meaning: "đỉnh, chóp / con quay" }
+            ],
+            sentences: [
+                // Khôi phục chữ dính liền từ hình ảnh gốc (câu 7, 8, 9) thành văn bản chuẩn
+                { id: "s7", sentence: "Can you see a pin in a bin?", meaning: "Bạn có thể nhìn thấy một cái ghim cài ở trong thùng rác không?" },
+                { id: "s8", sentence: "I don't want six pits.", meaning: "Tôi không muốn sáu cái hạt quả." },
+                { id: "s9", sentence: "The hot pot is under the cot.", meaning: "Cái nồi nóng ở dưới chiếc giường gấp." }
+            ]
+        };
+
+        // BỘ ENGINE PHÁT ÂM CHUẨN TỐC ĐỘ 0.7 
+        function playSound(textToRead, element, activeClass) {
+            window.speechSynthesis.cancel(); 
+            
+            document.querySelectorAll('.word-card, .play-all-btn, .clickable-word').forEach(el => {
+                el.classList.remove('playing', 'playing-word');
+            });
+
+            if (element) {
+                element.classList.add(activeClass);
+            }
+
+            // Loại bỏ dấu câu khi đọc từ đơn lẻ để tránh lỗi ngắt quãng âm
+            let cleanText = textToRead.replace(/[.,?\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+            let utterance = new SpeechSynthesisUtterance(cleanText);
+            
+            utterance.lang = 'en-US'; 
+            utterance.rate = 0.7; // Tốc độ chuẩn sư phạm tiểu học
+
+            utterance.onend = () => {
+                if (element) {
+                    element.classList.remove(activeClass);
+                }
+            };
+
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // TỰ ĐỘNG NHẬN DIỆN VÀ BÔI ĐỎ CẢ NGUYÊN ÂM 'I' VÀ 'O' TRONG BÀI
+        function highlightVowels(text) {
+            return text.split('').map(char => {
+                let lowerChar = char.toLowerCase();
+                if (lowerChar === 'i' || lowerChar === 'o') {
+                    return `<span class="highlight-vowel">${char}</span>`;
+                }
+                return char;
+            }).join('');
+        }
+
+        // IN RA GIAO DIỆN 24 TỪ VỰNG
+        function loadWords() {
+            const grid = document.getElementById('wordsGrid');
+            grid.innerHTML = lesson3Data.words.map(item => `
+                <div class="word-card" onclick="playSound('${item.word}', this, 'playing')">
+                    <div class="word-text">${highlightVowels(item.word)}</div>
+                    <div class="ipa-text">${item.ipa}</div>
+                    <div class="meaning-text">${item.meaning}</div>
+                </div>
+            `).join('');
+        }
+
+        // IN RA GIAO DIỆN LUYỆN ĐỌC ĐA ĐIỂM 3 CÂU
+        function loadSentences() {
+            const list = document.getElementById('sentencesList');
+            list.innerHTML = lesson3Data.sentences.map(item => {
+                const wordsArray = item.sentence.split(' ');
+                const wordsRowHtml = wordsArray.map(word => {
+                    const cleanWord = word.replace(/[.,?]/g, "");
+                    return `
+                        <span class="clickable-word" onclick="event.stopPropagation(); playSound('${cleanWord}', this, 'playing-word')">
+                            ${highlightVowels(word)}
+                        </span>
+                    `;
+                }).join('');
+
+                return `
+                    <div class="sentence-card">
+                        <button class="play-all-btn" onclick="playSound('${item.sentence}', this, 'playing')">
+                            🔊 Nghe cả câu
+                        </button>
+                        <div class="sentence-words-row">${wordsRowHtml}</div>
+                        <div class="sentence-translation">${item.meaning}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // ĐIỀU HƯỚNG CHUYỂN ĐỔI TAB MƯỢT MÀ
+        function changeTab(tabName) {
+            document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            window.speechSynthesis.cancel(); 
+
+            if (tabName === 'words') {
+                document.getElementById('sectionWords').classList.add('active');
+                document.getElementById('tabWords').classList.add('active');
+            } else {
+                document.getElementById('sectionSentences').classList.add('active');
+                document.getElementById('tabSentences').classList.add('active');
+            }
+        }
+
+        window.onload = () => {
+            loadWords();
+            loadSentences();
+        };
+    </script>
+</body>
+</html>

@@ -10,7 +10,7 @@
             --bg-app: #F5FCFF;
             --header-bg: #FFD166;
             --text-main: #2B2D42;
-            --vowel-red: #FF0000; /* Bôi đỏ rực rỡ để nổi bật nguyên âm */
+            --vowel-red: #FF0000;
             --btn-word: #4EA8DE;
             --btn-sentence: #FF9F43;
             --border-color: #E2ECEF;
@@ -80,9 +80,8 @@
             box-shadow: 0 4px 12px rgba(6, 214, 160, 0.3);
         }
 
-        /* Khung nội dung */
         .container {
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
             padding: 0 15px;
         }
@@ -98,12 +97,11 @@
         /* --- LAYOUT CỐ ĐỊNH CHUẨN: 6 HÀNG x 4 CỘT --- */
         .words-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* Bắt buộc luôn hiển thị đúng 4 cột trên 1 hàng */
+            grid-template-columns: repeat(4, 1fr);
             gap: 15px;
             margin-top: 10px;
         }
 
-        /* Hỗ trợ hiển thị mượt mà trên di động nhỏ tránh méo chữ */
         @media (max-width: 650px) {
             .words-grid {
                 grid-template-columns: repeat(2, 1fr); 
@@ -135,10 +133,10 @@
             background-color: #FFEBEF;
         }
 
-        /* --- CẤU TRÚC KHUNG ẢNH MINH HỌA PHÍA TRÊN --- */
+        /* Khung chứa ảnh minh họa */
         .word-image-container {
             width: 100%;
-            height: 110px; /* Chiều cao cân đối giúp layout đều tăm tắp */
+            height: 110px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -146,37 +144,92 @@
             background-color: #F8F9FA;
             border-radius: 14px;
             overflow: hidden;
+            position: relative;
             border: 1px dashed #D0D8E0;
         }
 
         .word-image {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Giữ nguyên tỷ lệ ảnh gốc từ sách, không bị bóp méo */
+            object-fit: contain;
             padding: 4px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2; /* Đè lên trên phần đồ họa CSS nếu có file ảnh thật */
+            background: transparent;
         }
 
-        .word-text {
-            font-size: 1.8rem;
-            font-weight: bold;
-            letter-spacing: 0.5px;
-            color: #000;
+        /* --- BỘ VẼ ĐỒ HỌA CSS CARD MINH HỌA (CSS WORD ART) --- */
+        .css-art {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            z-index: 1;
         }
 
-        /* Màu đỏ rực rỡ riêng nguyên âm 'a' */
-        .highlight-vowel {
-            color: var(--vowel-red) !important;
-            font-weight: 800;
-        }
+        /* Hình mẫu đại diện một số hình vẽ nổi bật */
+        .art-ram { width: 50px; height: 40px; background: #D2B48C; border-radius: 50% 50% 40% 40%; box-shadow: -15px -5px 0 -2px #FFF, 15px -5px 0 -2px #FFF; position: relative; } /* Con cừu */
+        .art-ram::before { content: '🐏'; font-size: 3rem; position: absolute; top: -15px; left: -2px; }
+        
+        .art-jam { width: 45px; height: 55px; background: #FF4D6D; border-radius: 8px; position: relative; border: 3px solid #FF758F; } /* Lọ mứt */
+        .art-jam::before { content: ""; width: 49px; height: 10px; background: #FFB3C1; position: absolute; top: -8px; left: -5px; border-radius: 4px; }
+        .art-jam::after { content: "Jam"; font-size: 10px; color: white; background: #C9184A; padding: 1px 4px; position: absolute; top: 15px; left: 3px; font-weight: bold; border-radius: 3px; }
 
-        .ipa-text {
-            font-size: 1rem;
-            color: #666;
-            font-style: italic;
-            margin-top: 3px;
-        }
+        .art-dam { width: 70px; height: 45px; background: #8D99AE; border-radius: 4px; position: relative; clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%); } /* Con đập chắn nước */
+        .art-dam::before { content: ""; width: 100%; height: 15px; background: #00B4D8; position: absolute; bottom: 0; }
 
-        /* --- PHẦN 2: LUYỆN ĐỌC CÂU (SENTENCES) --- */
+        .art-yam { width: 65px; height: 35px; background: #9E2A2B; border-radius: 50% 15% 50% 15%; transform: rotate(-15deg); } /* Củ khoai lang/khoai mỡ */
+
+        .art-fan { width: 55px; height: 55px; border: 3px solid #4CC9F0; border-radius: 50%; position: relative; animation: spin 4s linear infinite; } /* Cái quạt quay */
+        .art-fan::before, .art-fan::after { content: ""; background: #4CC9F0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        .art-fan::before { width: 45px; height: 10px; border-radius: 5px; }
+        .art-fan::after { width: 10px; height: 45px; border-radius: 5px; }
+
+        .art-man { font-size: 3rem; } .art-man::before { content: "👨"; }
+        .art-can { width: 40px; height: 60px; background: #90E0EF; border-radius: 8px; border: 2px solid #0077B6; position: relative; } /* Lon nước ngọt */
+        .art-can::before { content: ""; width: 30px; height: 6px; background: #FFF; position: absolute; top: 4px; left: 3px; border-radius: 2px; }
+
+        .art-pan { width: 55px; height: 30px; background: #2B2D42; border-radius: 0 0 20px 20px; position: relative; } /* Chảo rán */
+        .art-pan::before { content: ""; width: 35px; height: 6px; background: #2B2D42; position: absolute; top: 0; right: -32px; border-radius: 3px; }
+
+        .art-dad { font-size: 3rem; } .art-dad::before { content: "🧔"; }
+        .art-pad { width: 45px; height: 55px; background: #FFF; border: 2px solid #6C757D; box-shadow: 3px 3px 0 #E9ECEF; border-radius: 4px; position: relative; } /* Tập giấy viết */
+        .art-pad::before { content: ""; width: 100%; height: 8px; background: #DC3545; position: absolute; top: 0; left: 0; }
+
+        .art-bag { width: 50px; height: 45px; background: #FFB703; border-radius: 12px; position: relative; margin-top: 10px; } /* Cặp sách */
+        .art-bag::before { content: ""; width: 30px; height: 20px; border: 3px solid #FFB703; border-bottom: none; position: absolute; top: -16px; left: 7px; border-radius: 10px 10px 0 0; }
+
+        .art-rag { width: 50px; height: 45px; background: #A8DADC; clip-path: polygon(10% 10%, 90% 0%, 100% 85%, 75% 70%, 50% 90%, 20% 75%, 0% 100%); } /* Giẻ lau rách */
+
+        .art-tap { font-size: 3rem; } .art-tap::before { content: "🚰"; }
+        .art-nap { font-size: 3.2rem; } .art-nap::before { content: "💤"; }
+        
+        .art-map { width: 60px; height: 45px; background: #E9D8A6; border: 2px solid #94D2BD; position: relative; display: grid; grid-template-columns: repeat(3, 1fr); overflow:hidden; } /* Bản đồ đường đi */
+        .art-map::before { content: "📍"; font-size: 14px; position: absolute; top: 10px; left: 20px; z-index: 3; }
+        
+        .art-cap { width: 55px; height: 30px; background: #EE6C4D; border-radius: 30px 30px 0 0; position: relative; } /* Mũ lưỡi trai */
+        .art-cap::before { content: ""; width: 30px; height: 6px; background: #EE6C4D; position: absolute; bottom: 0; right: -20px; border-radius: 0 10px 10px 0; }
+
+        .art-rat { font-size: 3rem; } .art-rat::before { content: "🐀"; }
+        .art-bat { font-size: 3.2rem; } .art-bat::before { content: "🦇"; }
+        .art-hat { width: 55px; height: 35px; background: #3D5A80; border-radius: 10px 10px 0 0; position: relative; } /* Mũ ảo thuật gia */
+        .art-hat::before { content: ""; width: 75px; height: 6px; background: #293241; position: absolute; bottom: -4px; left: -10px; border-radius: 3px; }
+
+        .art-mat { width: 65px; height: 40px; background: #BC6C25; border: 3px dashed #DDA15E; border-radius: 4px; } /* Thảm chùi chân */
+        .art-van { font-size: 3rem; } .art-van::before { content: "🚐"; }
+        .art-sad { font-size: 3rem; } .art-sad::before { content: "😢"; }
+        .art-tag { width: 35px; height: 50px; background: #E0AAFF; border-radius: 4px; position: relative; clip-path: polygon(30% 0%, 70% 0%, 100% 25%, 100% 100%, 0% 100%, 0% 25%); } /* Thẻ mác quần áo */
+        .art-tag::before { content: ""; width: 6px; height: 6px; background: white; border-radius: 50%; position: absolute; top: 6px; left: 14px; }
+
+        .art-lap { font-size: 3rem; } .art-lap::before { content: "💻"; }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* --- PHẦN LUYỆN ĐỌC CÂU (SENTENCES) --- */
         .sentence-list {
             display: flex;
             flex-direction: column;
@@ -274,41 +327,39 @@
 
     <script>
         // DATA NỘI DUNG CHUẨN XÁC: 24 TỪ VÀ 3 CÂU CUỐI TRANG 3
-        // Bạn có thể đổi tên các đường dẫn "image" dưới đây thành tên file ảnh thật trong máy của bạn (Ví dụ: "images/ram.jpg")
         const lesson2Data = {
             words: [
                 // Hàng 1
-                { word: "ram", ipa: "/ræm/", image: "images/ram.png" }, 
-                { word: "jam", ipa: "/dʒæm/", image: "images/jam.png" }, 
-                { word: "dam", ipa: "/dæm/", image: "images/dam.png" }, 
-                { word: "yam", ipa: "/jæm/", image: "images/yam.png" },
+                { word: "ram", ipa: "/ræm/", image: "images/ram.png", cssClass: "art-ram" }, 
+                { word: "jam", ipa: "/dʒæm/", image: "images/jam.png", cssClass: "art-jam" }, 
+                { word: "dam", ipa: "/dæm/", image: "images/dam.png", cssClass: "art-dam" }, 
+                { word: "yam", ipa: "/jæm/", image: "images/yam.png", cssClass: "art-yam" },
                 // Hàng 2
-                { word: "fan", ipa: "/fæn/", image: "images/fan.png" }, 
-                { word: "man", ipa: "/mæn/", image: "images/man.png" }, 
-                { word: "pan", ipa: "/pæn/", image: "images/pan.png" }, 
-                { word: "can", ipa: "/kæn/", image: "images/can.png" },
+                { word: "fan", ipa: "/fæn/", image: "images/fan.png", cssClass: "art-fan" }, 
+                { word: "man", ipa: "/mæn/", image: "images/man.png", cssClass: "art-man" }, 
+                { word: "pan", ipa: "/pæn/", image: "images/pan.png", cssClass: "art-pan" }, 
+                { word: "can", ipa: "/kæn/", image: "images/can.png", cssClass: "art-can" },
                 // Hàng 3
-                { word: "dad", ipa: "/dæd/", image: "images/dad.png" }, 
-                { word: "pad", ipa: "/pæd/", image: "images/pad.png" }, 
-                { word: "bag", ipa: "/bæg/", image: "images/bag.png" }, 
-                { word: "rag", ipa: "/ræg/", image: "images/rag.png" },
+                { word: "dad", ipa: "/dæd/", image: "images/dad.png", cssClass: "art-dad" }, 
+                { word: "pad", ipa: "/pæd/", image: "images/pad.png", cssClass: "art-pad" }, 
+                { word: "bag", ipa: "/bæg/", image: "images/bag.png", cssClass: "art-bag" }, 
+                { word: "rag", ipa: "/ræg/", image: "images/rag.png", cssClass: "art-rag" },
                 // Hàng 4
-                { word: "tap", ipa: "/tæp/", image: "images/tap.png" }, 
-                { word: "nap", ipa: "/næp/", image: "images/nap.png" }, 
-                { word: "map", ipa: "/mæp/", image: "images/map.png" }, 
-                { word: "cap", ipa: "/kæp/", image: "images/cap.png" },
+                { word: "tap", ipa: "/tæp/", image: "images/tap.png", cssClass: "art-tap" }, 
+                { word: "nap", ipa: "/næp/", image: "images/nap.png", cssClass: "art-nap" }, 
+                { word: "map", ipa: "/mæp/", image: "images/map.png", cssClass: "art-map" }, 
+                { word: "cap", ipa: "/kæp/", image: "images/cap.png", cssClass: "art-cap" },
                 // Hàng 5
-                { word: "rat", ipa: "/ræt/", image: "images/rat.png" }, 
-                { word: "bat", ipa: "/bæt/", image: "images/bat.png" }, 
-                { word: "hat", ipa: "/hæt/", image: "images/hat.png" }, 
-                { word: "mat", ipa: "/mæt/", image: "images/mat.png" },
+                { word: "rat", ipa: "/ræt/", image: "images/rat.png", cssClass: "art-rat" }, 
+                { word: "bat", ipa: "/bæt/", image: "images/bat.png", cssClass: "art-bat" }, 
+                { word: "hat", ipa: "/hæt/", image: "images/hat.png", cssClass: "art-hat" }, 
+                { word: "mat", ipa: "/mæt/", image: "images/mat.png", cssClass: "art-mat" },
                 // Hàng 6
-                { word: "van", ipa: "/væn/", image: "images/van.png" }, 
-                { word: "sad", ipa: "/sæd/", image: "images/sad.png" }, 
-                { word: "tag", ipa: "/tæg/", image: "images/tag.png" }, 
-                { word: "lap", ipa: "/læp/", image: "images/lap.png" }
+                { word: "van", ipa: "/væn/", image: "images/van.png", cssClass: "art-van" }, 
+                { word: "sad", ipa: "/sæd/", image: "images/sad.png", cssClass: "art-sad" }, 
+                { word: "tag", ipa: "/tæg/", image: "images/tag.png", cssClass: "art-tag" }, 
+                { word: "lap", ipa: "/læp/", image: "images/lap.png", cssClass: "art-lap" }
             ],
-            // 3 CÂU CUỐI CÙNG TRANG 3
             sentences: [
                 { id: "s1", sentence: "A ram is on the dam.", meaning: "Một con cừu đực ở trên con đập." },
                 { id: "s2", sentence: "The ram has a yam.", meaning: "Con cừu đực có một củ khoai mỡ." },
@@ -316,9 +367,9 @@
             ]
         };
 
-        // BỘ MÁY PHÁT ÂM TIẾNG ANH CHUẨN MỸ - KHÔNG LỖI ĐƯỜNG DẪN
+        // BỘ MÁY PHÁT ÂM TIẾNG ANH CHUẨN MỸ
         function playSound(textToRead, element, activeClass) {
-            window.speechSynthesis.cancel(); // Dừng ngay âm thanh cũ khi click thao tác mới
+            window.speechSynthesis.cancel(); 
             
             document.querySelectorAll('.word-card, .play-all-btn').forEach(el => el.classList.remove('playing'));
 
@@ -326,12 +377,11 @@
                 element.classList.add(activeClass);
             }
 
-            // Lọc văn bản sạch trước khi truyền cho máy đọc nhằm triệt tiêu lỗi phát âm
             let cleanText = textToRead.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()\/]/g, "");
             let utterance = new SpeechSynthesisUtterance(cleanText);
             
             utterance.lang = 'en-US'; 
-            utterance.rate = 0.8; // THIẾT LẬP TỐC ĐỘ ĐỌC 0.8 CHẬM RÃI THEO YÊU CẦU
+            utterance.rate = 0.8; // TỐC ĐỘ 0.8 CHẬM RÃI ĐỂ TRẺ DỄ NGHE ÂM ĐUÔI
 
             utterance.onend = () => {
                 if (element) {
@@ -342,7 +392,7 @@
             window.speechSynthesis.speak(utterance);
         }
 
-        // TỰ ĐỘNG BÔI ĐỎ TOÀN BỘ CHỮ A/a MỤC TIÊU
+        // TỰ ĐỘNG BÔI ĐỎ TOÀN BỘ CHỮ A/a
         function highlightLetterA(text) {
             return text.split('').map(char => {
                 if (char.toLowerCase() === 'a') {
@@ -352,13 +402,16 @@
             }).join('');
         }
 
-        // ĐỔ DỮ LIỆU LÊN GRID (CÓ ẢNH PHÍA TRÊN)
+        // ĐỔ DỮ LIỆU LÊN GRID (HIỂN THỊ CSS ART NẾU CHƯA CÓ FILE ẢNH THẬT)
         function loadWords() {
             const grid = document.getElementById('wordsGrid');
             grid.innerHTML = lesson2Data.words.map(item => `
                 <div class="word-card" onclick="playSound('${item.word}', this, 'playing')">
                     <div class="word-image-container">
-                        <img src="${item.image}" alt="${item.word}" class="word-image" onerror="this.style.display='none'; this.parentNode.innerText='📷'">
+                        <div class="css-art">
+                            <div class="${item.cssClass}"></div>
+                        </div>
+                        <img src="${item.image}" alt="${item.word}" class="word-image" onerror="this.style.display='none'">
                     </div>
                     <div>
                         <div class="word-text">${highlightLetterA(item.word)}</div>
@@ -368,7 +421,7 @@
             `).join('');
         }
 
-        // ĐỔ DỮ LIỆU LUYỆN ĐỌC CÂU ĐA ĐIỂM TƯƠNG TÁC
+        // ĐỔ DỮ LIỆU LUYỆN ĐỌC CÂU ĐA ĐIỂM
         function loadSentences() {
             const list = document.getElementById('sentencesList');
             
@@ -410,7 +463,6 @@
             }
         }
 
-        // Chạy chương trình ngay khi nạp xong trang
         window.onload = () => {
             loadWords();
             loadSentences();

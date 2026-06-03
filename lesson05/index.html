@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BÉ LUYỆN ĐÁNH VẦN TIẾNG ANH - Lesson 8</title>
+    <title>BÉ LUYỆN ĐÁNH VẦN TIẾNG ANH - Lesson 5</title>
     <style>
-        /* --- GIAO DIỆN ĐỒNG BỘ HOÀN TOÀN VỚI CÁC LESSON TRƯỚC --- */
+        /* --- HỆ MÀU TRANG NHÃ CHUẨN APP GIÁO DỤC TIỂU HỌC --- */
         :root {
-            --bg-app: #F8FAFC;         
-            --header-bg: #E0F2FE;      /* Màu nền xanh ngọc thanh lịch */
-            --text-brand: #0369A1;     /* Màu xanh dương đậm thương hiệu */
-            --text-main: #1E293B;      
-            --vowel-red: #FF0000;      /* Bôi đỏ kích thích nhận diện Phonics */
+            --bg-app: #F8FAFC;         /* Màu nền xám trắng dịu mắt, chống mỏi mắt cho bé */
+            --header-bg: #E0F2FE;      /* Màu nền tiêu đề xanh ngọc thanh lịch */
+            --text-brand: #0369A1;     /* Màu xanh dương đậm làm nổi bật thương hiệu */
+            --text-main: #1E293B;      /* Màu chữ văn bản chính */
+            --vowel-red: #FF0000;      /* Bôi đỏ rực rỡ để nhận diện nhóm nguyên âm đôi */
             --btn-word: #38BDF8;
             --btn-sentence: #FB923C;
             --card-bg: #FFFFFF;
@@ -30,6 +30,7 @@
             padding-bottom: 60px;
         }
 
+        /* --- PHẦN TIÊU ĐỀ PHÂN CẤP THỊ GIÁC (MỖI CÂU 1 DÒNG) --- */
         header {
             background-color: var(--header-bg);
             padding: 25px 20px;
@@ -60,12 +61,13 @@
             background-color: #BAE6FD;
             color: #0369A1;
             padding: 6px 20px;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 700;
             border-radius: 12px;
             border: 2px solid #7DD3FC;
         }
 
+        /* Thanh Chuyển Tab To Rõ Ràng */
         .tab-menu {
             display: flex;
             justify-content: center;
@@ -109,6 +111,7 @@
             display: block;
         }
 
+        /* --- BỐ CỤC LƯỚI TỰ ĐỘNG CÂN BẰNG THEO SỐ TỪ --- */
         .words-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -182,6 +185,7 @@
             font-weight: 500;
         }
 
+        /* --- KHU VỰC BÀI TẬP LUYỆN ĐỌC CÂU --- */
         .sentence-list {
             display: flex;
             flex-direction: column;
@@ -264,10 +268,11 @@
 </head>
 <body>
 
+    <!-- TIÊU ĐỀ PHÂN CẤP THỊ GIÁC CHUẨN SƯ PHẠM MẪU CỦA BẠN -->
     <header>
         <div class="main-title">BÉ LUYỆN ĐÁNH VẦN TIẾNG ANH</div>
         <div class="sub-title">Tiếng anh cô Hà - Nhịp cầu nhỏ bước ra thế giới</div>
-        <div class="lesson-title">Lesson 8: Nguyên âm dài /əʊ/, /uː/, /juː/</div>
+        <div class="lesson-title">Lesson 5: Nguyên âm dài /eɪ/, /aɪ/</div>
     </header>
 
     <div class="tab-menu">
@@ -277,72 +282,66 @@
 
     <div class="container">
         
+        <!-- TAB 1: 24 TỪ VỰNG TỰ ĐỘNG ĐỔ THEO ẢNH SƠ ĐỒ PHONICS -->
         <section id="sectionWords" class="content-section active">
             <div class="words-grid" id="wordsGrid">
-                </div>
+                <!-- Dữ liệu tự động đổ từ Javascript -->
+            </div>
         </section>
 
+        <!-- TAB 2: 3 CÂU LUYỆN ĐỌC GIẢI MÃ TỪ REBUS PUZZLE -->
         <section id="sectionSentences" class="content-section">
             <div class="sentence-list" id="sentencesList">
-                </div>
+                <!-- Dữ liệu tự động đổ từ Javascript -->
+            </div>
         </section>
 
     </div>
 
     <script>
-        // SỐ HÓA DỮ LIỆU PHONICS THEO TỪ ĐIỂN OXFORD
-        const lesson8Data = {
+        // SỐ HÓA TOÀN BỘ 24 TỪ VỰNG & 3 CÂU THEO ĐÚNG HÌNH ẢNH BẠN CUNG CẤP
+        const lesson5Data = {
             words: [
-                // Hàng 1: Vần "oa" phát âm /əʊ/
-                { word: "boat", ipa: "/bəʊt/", meaning: "thuyền, con thuyền" }, 
-                { word: "coat", ipa: "/kəʊt/", meaning: "áo khoác ngoài" }, 
-                { word: "soap", ipa: "/səʊp/", meaning: "bánh xà phòng" }, 
-                { word: "road", ipa: "/rəʊd/", meaning: "con đường" },
+                // --- NHÓM NGUYÊN ÂM DÀI LONG VOWEL A /eɪ/ ---
+                { word: "mane", ipa: "/meɪn/", meaning: "bờm (ngựa, sư tử)" }, 
+                { word: "cane", ipa: "/keɪn/", meaning: "cây ba toong, gậy chống" }, 
+                { word: "tape", ipa: "/teɪp/", meaning: "băng cuộn, băng keo" }, 
+                { word: "cape", ipa: "/keɪp/", meaning: "áo choàng không mũ" },
 
-                // Hàng 2: Vần "ow" phát âm /əʊ/ (Nhóm 1)
-                { word: "bow", ipa: "/bəʊ/", meaning: "chiếc nơ" }, 
-                { word: "row", ipa: "/rəʊ/", meaning: "chèo thuyền" }, 
-                { word: "yellow", ipa: "/ˈjeləʊ/", meaning: "màu vàng" }, 
-                { word: "pillow", ipa: "/ˈpɪləʊ/", meaning: "cái gối" },
+                { word: "game", ipa: "/ɡeɪm/", meaning: "trò chơi, bàn cờ" }, 
+                { word: "cake", ipa: "/keɪk/", meaning: "bánh ngọt, bánh kem" }, 
+                { word: "name", ipa: "/neɪm/", meaning: "tên gọi" }, 
+                { word: "lake", ipa: "/leɪk/", meaning: "hồ nước" },
 
-                // Hàng 3: Vần hỗn hợp "oa" và "ow" phát âm /əʊ/ (Nhóm 2)
-                { word: "goat", ipa: "/ɡəʊt/", meaning: "con dê" }, 
-                { word: "toad", ipa: "/təʊd/", meaning: "con cóc" }, 
-                { word: "elbow", ipa: "/ˈelbəʊ/", meaning: "khuỷu tay" }, 
-                { word: "window", ipa: "/ˈwɪndəʊ/", meaning: "cửa sổ" },
+                { word: "wave", ipa: "/weɪv/", meaning: "sóng biển, cái vẫy tay" }, 
+                { word: "cave", ipa: "/keɪv/", meaning: "hang động" }, 
+                { word: "skate", ipa: "/skeɪt/", meaning: "giày trượt patin" }, 
+                { word: "gate", ipa: "/ɡeɪt/", meaning: "cái cổng" },
 
-                // Hàng 4: Vần "ue" phát âm /uː/ hoặc /juː/
-                { word: "blue", ipa: "/bluː/", meaning: "màu xanh dương" }, 
-                { word: "glue", ipa: "/ɡluː/", meaning: "keo dán, hồ dán" }, 
-                { word: "clue", ipa: "/kluː/", meaning: "manh mối, gợi ý" }, 
-                { word: "Tuesday", ipa: "/ˈtjuːzdeɪ/", meaning: "thứ Ba" },
+                // --- NHÓM NGUYÊN ÂM DÀI LONG VOWEL I /aɪ/ ---
+                { word: "ripe", ipa: "/raɪp/", meaning: "quả chín (chuối chín)" }, 
+                { word: "fine", ipa: "/faɪn/", meaning: "khỏe, tốt, ổn" }, 
+                { word: "pine", ipa: "/paɪn/", meaning: "cây thông" }, 
+                { word: "kite", ipa: "/kaɪt/", meaning: "cái diều" },
 
-                // Hàng 5: Vần "ui" và "ew" phát âm /uː/ hoặc /juː/
-                { word: "fruit", ipa: "/fruːt/", meaning: "trái cây, hoa quả" }, 
-                { word: "suit", ipa: "/suːt/", meaning: "bộ com-lê, bộ vest" }, 
-                { word: "new", ipa: "/njuː/", meaning: "mới, mới mẻ" }, 
-                { word: "dew", ipa: "/djuː/", meaning: "giọt sương" },
+                { word: "lime", ipa: "/laɪm/", meaning: "quả chanh xanh" }, 
+                { word: "time", ipa: "/taɪm/", meaning: "thời gian, đồng hồ" }, 
+                { word: "bike", ipa: "/baɪk/", meaning: "xe đạp" }, 
+                { word: "hike", ipa: "/haɪk/", meaning: "đi bộ leo núi đường dài" },
 
-                // Hàng 6: Vần "oo" phát âm /uː/
-                { word: "moon", ipa: "/muːn/", meaning: "mặt trăng" }, 
-                { word: "zoo", ipa: "/zuː/", meaning: "vườn bách thú, sở thú" }, 
-                { word: "food", ipa: "/fuːd/", meaning: "thức ăn, thực phẩm" }, 
-                { word: "boot", ipa: "/buːt/", meaning: "chiếc ủng, giày bốt" }
+                { word: "five", ipa: "/faɪv/", meaning: "số 5" }, 
+                { word: "nine", ipa: "/naɪn/", meaning: "số 9" }, 
+                { word: "dive", ipa: "/daɪv/", meaning: "lặn xuống nước" }, 
+                { word: "line", ipa: "/laɪn/", meaning: "hàng lối, xếp hàng" }
             ],
             sentences: [
-<<<<<<< Updated upstream
                 { id: "s13", sentence: "The man has tape and a cane.", meaning: "Người đàn ông có băng keo và một cây gậy." },
                 { id: "s14", sentence: "I see a skate in a cave.", meaning: "Tôi nhìn thấy một chiếc giày trượt ở trong một hang động." },
-                { id: "s15", sentence: "My kite is fine in the pine.", meaning: "Cái diều của tôi vẫn rất ổn ở trên cây thông." }
-=======
-                { id: "s22", sentence: "A spy can cry. Can the sky cry?", meaning: "Một thám tử có thể khóc. Bầu trời có thể khóc được không?" },
-                { id: "s23", sentence: "The clue is blue glue on Tuesday.", meaning: "Manh mối chính là vệt keo dán màu xanh dương vào ngày thứ Ba." },
-                { id: "s24", sentence: "I eat fruit in my new suit.", meaning: "Tớ ăn trái cây trong bộ đồ vest mới của mình." }
->>>>>>> Stashed changes
+                { id: "s15", sentence: "My kite is fine in the pine.", meaning: "Cái diều của tôi vẫn rất tốt ở trên cây thông." }
             ]
         };
 
-        // BỘ ENGINE PHÁT ÂM CHUẨN TỐC ĐỘ 0.7
+        // BỘ ENGINE PHÁT ÂM CHUẨN TỐC ĐỘ CHẬM 0.7 CHO HỌC SINH TIỂU HỌC
         function playSound(textToRead, element, activeClass) {
             window.speechSynthesis.cancel(); 
             
@@ -354,11 +353,12 @@
                 element.classList.add(activeClass);
             }
 
+            // Xóa dấu câu để API đọc không bị vấp
             let cleanText = textToRead.replace(/[.,?\/#!$%\^&\*;:{}=\-_`~()]/g, "");
             let utterance = new SpeechSynthesisUtterance(cleanText);
             
             utterance.lang = 'en-US'; 
-            utterance.rate = 0.7; 
+            utterance.rate = 0.7; // Giọng đọc chậm rãi giúp các con dễ bắt chước bật âm đuôi
 
             utterance.onend = () => {
                 if (element) {
@@ -369,40 +369,29 @@
             window.speechSynthesis.speak(utterance);
         }
 
-        // THUẬT TOÁN HIGHLIGHT TỰ ĐỘNG CHUẨN PHONICS CHO LESSON 8
+        // THUẬT TOÁN TỰ ĐỘNG NHẬN DIỆN VÀ BÔI ĐỎ PHONICS (ĐÃ NÂNG CẤP XỬ LÝ DẤU CÂU)
         function highlightVowels(text) {
+            // Tách phần chữ cốt lõi và phần dấu câu ở cuối (ví dụ: "cane." -> chữ "cane", dấu ".")
             let coreWord = text.replace(/[.,?]$/, "");
             let punctuation = text.substring(coreWord.length);
-            let lowerWord = coreWord.toLowerCase();
 
-            // Danh sách các mục tiêu bôi đỏ của bài học này
-            const phonicsPatterns = ["oa", "ow", "ue", "ui", "oo", "ew"];
-            let highlightedCore = "";
-            let matched = false;
-
-            for (let pattern of phonicsPatterns) {
-                if (lowerWord.includes(pattern)) {
-                    let idx = lowerWord.indexOf(pattern);
-                    highlightedCore = coreWord.substring(0, idx) + 
-                                      `<span class="highlight-vowel">${coreWord.substr(idx, pattern.length)}</span>` + 
-                                      coreWord.substring(idx + pattern.length);
-                    matched = true;
-                    break;
+            let highlightedCore = coreWord.split('').map((char, index) => {
+                let lowerChar = char.toLowerCase();
+                // Bôi đỏ chữ 'a'/'i' chính diện và chữ 'e' câm đứng ở vị trí cuối cùng của từ cốt lõi
+                if (lowerChar === 'a' || lowerChar === 'i' || (lowerChar === 'e' && index === coreWord.length - 1)) {
+                    return `<span class="highlight-vowel">${char}</span>`;
                 }
-            }
+                return char;
+            }).join('');
 
-            // Phòng hờ các từ không chứa tổ hợp vần mục tiêu trong câu bổ trợ
-            if (!matched) {
-                highlightedCore = coreWord;
-            }
-
+            // Trả về chuỗi chữ đã bôi đỏ ghép lại với dấu câu gốc để giữ thẩm mỹ cấu trúc câu
             return highlightedCore + punctuation;
         }
 
-        // ĐỔ DỮ LIỆU LÊN GIAO DIỆN TỪ VỰNG
+        // ĐỔ DỮ LIỆU LÊN GIAO DIỆN 24 TỪ VỰNG
         function loadWords() {
             const grid = document.getElementById('wordsGrid');
-            grid.innerHTML = lesson8Data.words.map(item => `
+            grid.innerHTML = lesson5Data.words.map(item => `
                 <div class="word-card" onclick="playSound('${item.word}', this, 'playing')">
                     <div class="word-text">${highlightVowels(item.word)}</div>
                     <div class="ipa-text">${item.ipa}</div>
@@ -411,10 +400,10 @@
             `).join('');
         }
 
-        // ĐỔ DỮ LIỆU LÊN GIAO DIỆN LUYỆN ĐỌC CÂU
+        // ĐỔ DỮ LIỆU LÊN GIAO DIỆN LUYỆN ĐỌC 3 CÂU
         function loadSentences() {
             const list = document.getElementById('sentencesList');
-            list.innerHTML = lesson8Data.sentences.map(item => {
+            list.innerHTML = lesson5Data.sentences.map(item => {
                 const wordsArray = item.sentence.split(' ');
                 const wordsRowHtml = wordsArray.map(word => {
                     const cleanWord = word.replace(/[.,?]/g, "");
@@ -437,7 +426,7 @@
             }).join('');
         }
 
-        // CHUYỂN ĐỔI QUA LẠI GIỮA CÁC TAB
+        // ĐIỀU HƯỚNG TAB TRỰC QUAN
         function changeTab(tabName) {
             document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -452,6 +441,7 @@
             }
         }
 
+        // Khởi chạy ứng dụng ngay khi mở file thành công
         window.onload = () => {
             loadWords();
             loadSentences();

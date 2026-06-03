@@ -11,7 +11,7 @@
             --header-bg: #E0F2FE;      /* Màu nền tiêu đề xanh ngọc thanh lịch */
             --text-brand: #0369A1;     /* Màu xanh dương đậm làm nổi bật thương hiệu */
             --text-main: #1E293B;      /* Màu chữ văn bản chính */
-            --vowel-red: #FF0000;      /* Bôi đỏ rực rỡ để nhận diện nguyên âm dài */
+            --vowel-red: #FF0000;      /* Bôi đỏ rực rỡ để nhận diện nhóm nguyên âm đôi */
             --btn-word: #38BDF8;
             --btn-sentence: #FB923C;
             --card-bg: #FFFFFF;
@@ -294,48 +294,46 @@
     </div>
 
     <script>
-        // SỐ HÓA TOÀN BỘ DỮ LIỆU CHUẨN THEO TỪ ĐIỂN OXFORD
+        // SỐ HÓA TOÀN BỘ 24 TỪ VỰNG & 3 CÂU THEO ĐÚNG HÌNH ẢNH BẠN CUNG CẤP
         const lesson5Data = {
             words: [
-                // --- NHÓM LONG VOWEL A /eɪ/ ---
-                // Hàng 1: Quy tắc a_e
+                // --- NHÓM NGUYÊN ÂM DÀI LONG VOWEL A /eɪ/ ---
                 { word: "mane", ipa: "/meɪn/", meaning: "bờm (ngựa, sư tử)" }, 
-                { word: "cane", ipa: "/keɪn/", meaning: "cây ba toong, gậy" }, 
-                { word: "tape", ipa: "/teɪp/", meaning: "băng dính, băng keo" }, 
+                { word: "cane", ipa: "/keɪn/", meaning: "cây ba toong, gậy chống" }, 
+                { word: "tape", ipa: "/teɪp/", meaning: "băng cuộn, băng keo" }, 
                 { word: "cape", ipa: "/keɪp/", meaning: "áo choàng không mũ" },
-                // Hàng 2: Quy tắc ame / ake
-                { word: "game", ipa: "/ɡeɪm/", meaning: "trò chơi" }, 
+
+                { word: "game", ipa: "/ɡeɪm/", meaning: "trò chơi, bàn cờ" }, 
                 { word: "cake", ipa: "/keɪk/", meaning: "bánh ngọt, bánh kem" }, 
                 { word: "name", ipa: "/neɪm/", meaning: "tên gọi" }, 
                 { word: "lake", ipa: "/leɪk/", meaning: "hồ nước" },
-                // Hàng 3: Quy tắc ave / ate
+
                 { word: "wave", ipa: "/weɪv/", meaning: "sóng biển, cái vẫy tay" }, 
                 { word: "cave", ipa: "/keɪv/", meaning: "hang động" }, 
-                { word: "skate", ipa: "/skeɪt/", meaning: "giày trượt, trượt patin" }, 
+                { word: "skate", ipa: "/skeɪt/", meaning: "giày trượt patin" }, 
                 { word: "gate", ipa: "/ɡeɪt/", meaning: "cái cổng" },
 
-                // --- NHÓM LONG VOWEL I /aɪ/ ---
-                // Hàng 4: Quy tắc i_e
-                { word: "ripe", ipa: "/raɪp/", meaning: "quả chín" }, 
+                // --- NHÓM NGUYÊN ÂM DÀI LONG VOWEL I /aɪ/ ---
+                { word: "ripe", ipa: "/raɪp/", meaning: "quả chín (chuối chín)" }, 
                 { word: "fine", ipa: "/faɪn/", meaning: "khỏe, tốt, ổn" }, 
                 { word: "pine", ipa: "/paɪn/", meaning: "cây thông" }, 
                 { word: "kite", ipa: "/kaɪt/", meaning: "cái diều" },
-                // Hàng 5: Quy tắc ime / ike
+
                 { word: "lime", ipa: "/laɪm/", meaning: "quả chanh xanh" }, 
-                { word: "time", ipa: "/taɪm/", meaning: "thời gian, giờ giấc" }, 
+                { word: "time", ipa: "/taɪm/", meaning: "thời gian, đồng hồ" }, 
                 { word: "bike", ipa: "/baɪk/", meaning: "xe đạp" }, 
-                { word: "hike", ipa: "/haɪk/", meaning: "đi bộ đường dài" },
-                // Hàng 6: Quy tắc ive / ine
+                { word: "hike", ipa: "/haɪk/", meaning: "đi bộ leo núi đường dài" },
+
                 { word: "five", ipa: "/faɪv/", meaning: "số 5" }, 
                 { word: "nine", ipa: "/naɪn/", meaning: "số 9" }, 
-                { word: "dive", ipa: "/daɪv/", meaning: "lặn, lao mình xuống nước" }, 
-                { word: "line", ipa: "/laɪn/", meaning: "hàng lối, đường kẻ" }
+                { word: "dive", ipa: "/daɪv/", meaning: "lặn xuống nước" }, 
+                { word: "line", ipa: "/laɪn/", meaning: "hàng lối, xếp hàng" }
             ],
             sentences: [
-                // Khôi phục chữ viết dính liền và hình ảnh từ bài tập đoán chữ gốc thành văn bản chuẩn khoảng cách
+                // Khôi phục chữ viết liền (Themanhas, seea, inthe) và hình ảnh ẩn thành câu chuẩn
                 { id: "s13", sentence: "The man has tape and a cane.", meaning: "Người đàn ông có băng keo và một cây gậy." },
                 { id: "s14", sentence: "I see a skate in a cave.", meaning: "Tôi nhìn thấy một chiếc giày trượt ở trong một hang động." },
-                { id: "s15", sentence: "My kite is fine in the pine.", meaning: "Cái diều của tôi vẫn tốt ở trên cây thông." }
+                { id: "s15", sentence: "My kite is fine in the pine.", meaning: "Cái diều của tôi vẫn rất tốt ở trên cây thông." }
             ]
         };
 
@@ -351,12 +349,12 @@
                 element.classList.add(activeClass);
             }
 
-            // Loại bỏ dấu câu khi đọc từ đơn lẻ để tránh lỗi ngắt quãng âm
+            // Loại bỏ các ký tự dấu câu để giọng đọc máy không bị ngắt quãng vô lý
             let cleanText = textToRead.replace(/[.,?\/#!$%\^&\*;:{}=\-_`~()]/g, "");
             let utterance = new SpeechSynthesisUtterance(cleanText);
             
             utterance.lang = 'en-US'; 
-            utterance.rate = 0.7; // Tốc độ chậm rãi chuẩn sư phạm mầm non/tiểu học
+            utterance.rate = 0.7; // Tốc độ chậm rãi, rõ ràng từng âm đuôi (ending sounds) cho các con nghe
 
             utterance.onend = () => {
                 if (element) {
@@ -367,4 +365,76 @@
             window.speechSynthesis.speak(utterance);
         }
 
-        // TỰ ĐỘNG NHẬ
+        // THUẬT TOÁN TỰ ĐỘNG BÔI ĐỎ PHONICS (Nhận diện nguyên âm chính và âm 'e' câm ở cuối từ)
+        function highlightVowels(text) {
+            return text.split('').map((char, index) => {
+                let lowerChar = char.toLowerCase();
+                // Bôi đỏ chữ 'a' và 'i' đóng vai trò âm chính, và chữ 'e' câm đứng cuối từ tạo nên quy tắc Magic E (âm dài)
+                if (lowerChar === 'a' || lowerChar === 'i' || (lowerChar === 'e' && index === text.length - 1)) {
+                    return `<span class="highlight-vowel">${char}</span>`;
+                }
+                return char;
+            }).join('');
+        }
+
+        // ĐỔ DỮ LIỆU LÊN GIAO DIỆN 24 TỪ VỰNG
+        function loadWords() {
+            const grid = document.getElementById('wordsGrid');
+            grid.innerHTML = lesson5Data.words.map(item => `
+                <div class="word-card" onclick="playSound('${item.word}', this, 'playing')">
+                    <div class="word-text">${highlightVowels(item.word)}</div>
+                    <div class="ipa-text">${item.ipa}</div>
+                    <div class="meaning-text">${item.meaning}</div>
+                </div>
+            `).join('');
+        }
+
+        // ĐỔ DỮ LIỆU LÊN GIAO DIỆN LUYỆN ĐỌC 3 CÂU
+        function loadSentences() {
+            const list = document.getElementById('sentencesList');
+            list.innerHTML = lesson5Data.sentences.map(item => {
+                const wordsArray = item.sentence.split(' ');
+                const wordsRowHtml = wordsArray.map(word => {
+                    const cleanWord = word.replace(/[.,?]/g, "");
+                    return `
+                        <span class="clickable-word" onclick="event.stopPropagation(); playSound('${cleanWord}', this, 'playing-word')">
+                            ${highlightVowels(word)}
+                        </span>
+                    `;
+                }).join('');
+
+                return `
+                    <div class="sentence-card">
+                        <button class="play-all-btn" onclick="playSound('${item.sentence}', this, 'playing')">
+                            🔊 Nghe cả câu
+                        </button>
+                        <div class="sentence-words-row">${wordsRowHtml}</div>
+                        <div class="sentence-translation">${item.meaning}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // ĐIỀU HƯỚNG TAB TRỰC QUAN
+        function changeTab(tabName) {
+            document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            window.speechSynthesis.cancel(); 
+
+            if (tabName === 'words') {
+                document.getElementById('sectionWords').classList.add('active');
+                document.getElementById('tabWords').classList.add('active');
+            } else {
+                document.getElementById('sectionSentences').classList.add('active');
+                document.getElementById('tabSentences').classList.add('active');
+            }
+        }
+
+        // Khởi chạy ứng dụng ngay khi trình duyệt mở file thành công
+        window.onload = () => {
+            loadWords();
+            loadSentences();
+        };
+    </script>
+</body>
+</html>

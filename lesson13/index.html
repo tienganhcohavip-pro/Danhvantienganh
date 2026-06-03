@@ -3,104 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BÉ LUYỆN ĐÁNH VẦN TIẾNG ANH - Lesson 6</title>
+    <title>BÉ LUYỆN ĐÁNH VẦN TIẾNG ANH - LESSON 13</title>
     <style>
-        /* --- HỆ MÀU GIAO DIỆN GIỮ NGUYÊN TỪ LESSON 5 --- */
         :root {
-            --bg-app: #F8FAFC;         /* Màu nền xám trắng chống mỏi mắt */
-            --header-bg: #E0F2FE;      /* Màu nền xanh ngọc thanh lịch */
-            --text-brand: #0369A1;     /* Màu xanh dương đậm thương hiệu */
-            --text-main: #1E293B;      /* Màu chữ văn bản chính */
-            --vowel-red: #FF0000;      /* Bôi đỏ rực rỡ để nhận diện nhóm nguyên âm đôi */
+            --bg-app: #F0FDF4;          /* Màu xanh lá mầm dịu mắt học đường */
+            --header-bg: #E0F2FE;       /* Xanh dương nhạt nguyên bản */
+            --text-brand: #0369A1;      
+            --text-main: #1E293B;      
+            --vowel-red: #FF0000;       /* Màu đỏ nổi bật cho cụm từ mục tiêu */
             --btn-word: #38BDF8;
             --btn-sentence: #FB923C;
             --card-bg: #FFFFFF;
+            
+            /* Màu viền khung câu tương thích theo ảnh đính kèm */
+            --border-orange: #F97316;
+            --border-blue: #38BDF8;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
         }
 
         body {
             background-color: var(--bg-app);
             color: var(--text-main);
-            padding-bottom: 60px;
+            padding-bottom: 80px;
         }
 
-        /* --- TIÊU ĐỀ PHÂN CẤP THỊ GIÁC ĐỒNG BỘ --- */
         header {
             background-color: var(--header-bg);
-            padding: 25px 20px;
+            padding: 30px 20px;
             text-align: center;
-            border-bottom-left-radius: 32px;
-            border-bottom-right-radius: 32px;
-            box-shadow: 0 4px 15px rgba(3, 105, 161, 0.08);
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            box-shadow: 0 8px 24px rgba(3, 105, 161, 0.1);
         }
 
         header .main-title {
             color: var(--text-brand);
-            font-size: 2.4rem;
+            font-size: 2.6rem;
             font-weight: 800;
-            letter-spacing: 0.5px;
             margin-bottom: 8px;
-            text-shadow: 1px 1px 0px #FFF;
+            text-shadow: 2px 2px 0px #FFF;
         }
 
         header .sub-title {
             color: #0E7490;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
 
         header .lesson-title {
             display: inline-block;
             background-color: #BAE6FD;
             color: #0369A1;
-            padding: 6px 20px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            border-radius: 12px;
-            border: 2px solid #7DD3FC;
+            padding: 10px 25px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            border-radius: 20px;
+            border: 3px solid #7DD3FC;
         }
 
-        /* Thanh Chuyển Tab To Rõ Ràng */
         .tab-menu {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin: 30px auto;
-            max-width: 600px;
-            padding: 0 15px;
+            gap: 20px;
+            margin: 35px auto;
+            max-width: 700px;
+            padding: 0 20px;
         }
 
         .tab-btn {
             flex: 1;
-            padding: 15px;
-            font-size: 1.15rem;
+            padding: 18px;
+            font-size: 1.3rem;
             font-weight: bold;
-            border: 2px solid #CBD5E1;
-            border-radius: 20px;
+            border: 3px solid #CBD5E1;
+            border-radius: 24px;
             background-color: #E2E8F0;
             color: #475569;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .tab-btn.active {
             background-color: #0EA5E9;
             color: white;
             border-color: #0284C7;
-            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4);
+            transform: translateY(-2px);
         }
 
         .container {
-            max-width: 950px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 20px;
         }
 
         .content-section {
@@ -111,158 +112,162 @@
             display: block;
         }
 
-        /* --- BỐ CỤC LƯỚI TỰ ĐỘNG CÂN BẰNG TỪ VỰNG --- */
+        /* Grid từ vựng */
         .words-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            gap: 25px;
             margin-top: 10px;
         }
 
         @media (max-width: 768px) {
-            .words-grid {
-                grid-template-columns: repeat(2, 1fr); 
-            }
+            .words-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         .word-card {
             background: var(--card-bg);
-            border: 3px solid #E2E8F0;
-            border-radius: 24px;
-            padding: 25px 15px;
+            border: 4px solid #E2E8F0;
+            border-radius: 28px;
+            padding: 30px 15px;
             text-align: center;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.03);
             transition: all 0.2s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 140px;
         }
 
         .word-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-5px);
             border-color: var(--btn-word);
-            box-shadow: 0 8px 16px rgba(56, 189, 248, 0.15);
+            box-shadow: 0 12px 20px rgba(56, 189, 248, 0.2);
         }
 
         .word-card.playing {
             border-color: var(--vowel-red);
             background-color: #FEF2F2;
-            animation: pulse 0.5s infinite alternate;
-        }
-
-        @keyframes pulse {
-            from { transform: scale(1); }
-            to { transform: scale(1.02); }
         }
 
         .word-text {
-            font-size: 2.6rem;
+            font-size: 3rem;
             font-weight: bold;
-            letter-spacing: 1px;
             color: #000;
+            margin-bottom: 5px;
         }
 
+        /* Điểm tập trung Phonics bôi đỏ chữ viết tiêu điểm */
         .highlight-vowel {
             color: var(--vowel-red) !important;
             font-weight: 800;
         }
 
         .ipa-text {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: #0284C7;
             font-style: italic;
-            margin-top: 3px;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .meaning-text {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: #64748B;
-            margin-top: 8px;
-            font-weight: 500;
+            margin-top: 10px;
+            font-weight: bold;
         }
 
-        /* --- KHU VỰC BÀI TẬP LUYỆN ĐỌC CÂU --- */
+        /* Khu vực câu luyện đọc */
         .sentence-list {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 35px;
         }
 
         .sentence-card {
             background: var(--card-bg);
-            border: 3px solid #E0F2FE;
-            border-radius: 28px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            border-radius: 32px;
+            padding: 35px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.02);
+            position: relative;
         }
+
+        .border-style-orange { border: 4px solid var(--border-orange); }
+        .border-style-blue { border: 4px solid var(--border-blue); }
 
         .play-all-btn {
             background-color: var(--btn-sentence);
             color: white;
             border: none;
-            padding: 12px 30px;
-            font-size: 1.1rem;
+            padding: 14px 35px;
+            font-size: 1.2rem;
             font-weight: bold;
-            border-radius: 25px;
+            border-radius: 30px;
             cursor: pointer;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             transition: all 0.2s;
-            box-shadow: 0 4px 12px rgba(251, 146, 60, 0.3);
+            box-shadow: 0 6px 15px rgba(251, 146, 60, 0.3);
         }
 
         .play-all-btn:hover {
             background-color: #EA580C;
-            transform: scale(1.05);
+            transform: scale(1.04);
         }
 
         .play-all-btn.playing {
             background-color: #10B981;
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 6px 15px rgba(16, 185, 129, 0.3);
         }
 
         .sentence-words-row {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px 15px;
+            align-items: center;
+            gap: 12px 18px;
             margin: 20px 0;
+        }
+
+        .sentence-num {
+            font-weight: 800;
+            color: var(--text-brand);
+            font-size: 2.2rem;
+            margin-right: 10px;
         }
 
         .clickable-word {
             display: inline-block;
-            padding: 8px 18px;
-            font-size: 1.9rem;
-            font-weight: 600;
-            background-color: #F1F5F9;
-            border-radius: 16px;
+            padding: 10px 22px;
+            font-size: 2.2rem;
+            font-weight: 700;
+            background-color: #F8FAFC;
+            border-radius: 20px;
             cursor: pointer;
-            border: 2px solid #E2E8F0;
-            transition: all 0.1s;
+            border: 3px solid #E2E8F0;
+            transition: all 0.15s;
             user-select: none;
         }
 
         .clickable-word:hover {
-            background-color: #E2E8F0;
+            background-color: #F1F5F9;
             border-color: var(--btn-word);
-            color: #0284C7;
+            transform: scale(1.08);
         }
 
         .clickable-word.playing-word {
             background-color: #FEF2F2;
             border-color: var(--vowel-red);
+            animation: bounce 0.3s ease;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
         }
 
         .sentence-translation {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: #475569;
             font-style: italic;
-            margin-top: 15px;
-            font-weight: 500;
+            margin-top: 20px;
+            font-weight: 600;
+            border-top: 1px dashed #E2E8F0;
+            padding-top: 15px;
         }
     </style>
 </head>
@@ -271,83 +276,107 @@
     <header>
         <div class="main-title">BÉ LUYỆN ĐÁNH VẦN TIẾNG ANH</div>
         <div class="sub-title">Tiếng anh cô Hà - Nhịp cầu nhỏ bước ra thế giới</div>
-        <div class="lesson-title">Lesson 6: Nguyên âm dài /əʊ/, /juː/, /uː/, /eɪ/</div>
+        <div class="lesson-title">Lesson 13: Kết hợp chữ /ɑːr/, /ɜː/, /er/, /aʊ/, /ɔɪ/, /ʊ/</div>
     </header>
 
     <div class="tab-menu">
         <button class="tab-btn active" id="tabWords" onclick="changeTab('words')">🔤 24 Từ Vựng Đánh Vần</button>
-        <button class="tab-btn" id="tabSentences" onclick="changeTab('sentences')">📖 3 Câu Luyện Đọc</button>
+        <button class="tab-btn" id="tabSentences" onclick="changeTab('sentences')">📖 6 Câu Luyện Đọc</button>
     </div>
 
     <div class="container">
         
-        <!-- TAB 1: 24 TỪ VỰNG CẬP NHẬT THEO IMAGE_1062A3.PNG -->
         <section id="sectionWords" class="content-section active">
             <div class="words-grid" id="wordsGrid">
-                <!-- Dữ liệu tự động đổ từ Javascript -->
-            </div>
+                </div>
         </section>
 
-        <!-- TAB 2: 3 CÂU LUYỆN ĐỌC GIẢI MÃ TỪ IMAGE_106266.PNG -->
         <section id="sectionSentences" class="content-section">
             <div class="sentence-list" id="sentencesList">
-                <!-- Dữ liệu tự động đổ từ Javascript -->
-            </div>
+                </div>
         </section>
 
     </div>
 
     <script>
-        // CẬP NHẬT TOÀN BỘ DATA DỰA TRÊN 2 FILE ẢNH MỚI CỦA LESSON 6
-        const lesson6Data = {
+        // CƠ SỞ DỮ LIỆU TỪ VỰNG GIẢI MÃ CHÍNH XÁC TỪ IMAGE_E77D5F.PNG THEO TỪ ĐIỂN OXFORD
+        const lesson13Data = {
             words: [
-                // Hàng 1: /əʊ/ (Nguyên âm o_e)
-                { word: "home", ipa: "/həʊm/", meaning: "nhà, tổ ấm" }, 
-                { word: "bone", ipa: "/bəʊn/", meaning: "khúc xương" }, 
-                { word: "cone", ipa: "/kəʊn/", meaning: "hình nón, kem ốc quế" }, 
-                { word: "rope", ipa: "/rəʊp/", meaning: "dây thừng" },
+                // Hàng 1: ar -> /ɑːr/
+                { word: "car", ipa: "/kɑː(r)/", meaning: "xe ô tô" }, 
+                { word: "park", ipa: "/pɑːk/", meaning: "công viên" }, 
+                { word: "star", ipa: "/stɑː(r)/", meaning: "ngôi sao" }, 
+                { word: "shark", ipa: "/ʃɑːk/", meaning: "con cá mập" },
 
-                // Hàng 2: /juː/ (Nguyên âm u_e biến thể 1)
-                { word: "cube", ipa: "/kjuːb/", meaning: "hình lập phương" }, 
-                { word: "mute", ipa: "/mjuːt/", meaning: "tắt tiếng, im lặng" }, 
-                { word: "cute", ipa: "/kjuːt/", meaning: "đáng yêu, xinh xắn" }, 
-                { word: "mule", ipa: "/mjuːl/", meaning: "con la" },
+                // Hàng 2: ir, ur -> /ɜː/
+                { word: "bird", ipa: "/bɜːd/", meaning: "con chim" }, 
+                { word: "girl", ipa: "/ɡɜːl/", meaning: "lớp học / cô bé" }, 
+                { word: "nurse", ipa: "/nɜːs/", meaning: "y tá" }, 
+                { word: "turtle", ipa: "/ˈtɜːtl/", meaning: "con rùa" },
 
-                // Hàng 3: /uː/ (Nguyên âm u_e biến thể 2)
-                { word: "tube", ipa: "/tjuːb/", meaning: "ống, tuýp kem" }, 
-                { word: "June", ipa: "/dʒuːn/", meaning: "tháng 6" }, 
-                { word: "rule", ipa: "/ruːl/", meaning: "luật lệ, quy định" }, 
-                { word: "tune", ipa: "/tjuːn/", meaning: "giai điệu" },
+                // Hàng 3: er, or -> /er/
+                { word: "spider", ipa: "/ˈspaɪdə(r)/", meaning: "con nhện" }, 
+                { word: "teacher", ipa: "/ˈtiːtʃə(r)/", meaning: "giáo viên" }, 
+                { word: "doctor", ipa: "/ˈdɒktə(r)/", meaning: "bác sĩ" }, 
+                { word: "actor", ipa: "/ˈæktə(r)/", meaning: "nam diễn viên" },
 
-                // Hàng 4: /eɪ/ (Tổ hợp chữ ai)
-                { word: "rain", ipa: "/reɪn/", meaning: "mơn mưa, trời mưa" }, 
-                { word: "nail", ipa: "/neɪl/", meaning: "cái đinh, móng tay" }, 
-                { word: "tail", ipa: "/teɪl/", meaning: "cái đuôi" }, 
-                { word: "wait", ipa: "/weɪt/", meaning: "chờ đợi" },
+                // Hàng 4: ou, ow -> /aʊ/
+                { word: "house", ipa: "/haʊs/", meaning: "ngôi nhà" }, 
+                { word: "mouse", ipa: "/maʊs/", meaning: "con chuột" }, 
+                { word: "cow", ipa: "/kaʊ/", meaning: "con bò cái" }, 
+                { word: "owl", ipa: "/aʊl/", meaning: "con cú mèo" },
 
-                // Hàng 5: /eɪ/ (Tổ hợp chữ ay)
-                { word: "bay", ipa: "/beɪ/", meaning: "vịnh biển" }, 
-                { word: "day", ipa: "/deɪ/", meaning: "ngày, ban ngày" }, 
-                { word: "say", ipa: "/seɪ/", meaning: "nói" }, 
-                { word: "pay", ipa: "/peɪ/", meaning: "thanh toán, trả tiền" },
+                // Hàng 5: oi, oy -> /ɔɪ/
+                { word: "coin", ipa: "/kɔɪn/", meaning: "đồng xu" }, 
+                { word: "oil", ipa: "/ɔɪl/", meaning: "dầu ăn / dầu" }, 
+                { word: "boy", ipa: "/bɔɪ/", meaning: "cậu bé" }, 
+                { word: "toy", ipa: "/tɔɪ/", meaning: "đồ chơi" },
 
-                // Hàng 6: /eɪ/ (Hỗn hợp ai và ay ở dòng cuối)
-                { word: "sail", ipa: "/seɪl/", meaning: "cánh buồm, lướt buồm" }, 
-                { word: "mail", ipa: "/meɪl/", meaning: "thư từ, bưu kiện" }, 
-                { word: "hay", ipa: "/heɪ/", meaning: "cỏ khô" }, 
-                { word: "may", ipa: "/meɪ/", meaning: "tháng 5, có thể" }
+                // Hàng 6: oo -> /ʊ/
+                { word: "cook", ipa: "/kʊk/", meaning: "đầu bếp / nấu ăn" }, 
+                { word: "book", ipa: "/bʊk/", meaning: "quyển sách" }, 
+                { word: "foot", ipa: "/fʊt/", meaning: "bàn chân" }, 
+                { word: "wood", ipa: "/wʊd/", meaning: "gỗ, củi" }
             ],
             sentences: [
-                { id: "s16", sentence: "The five nines dive in a line.", meaning: "Năm số chín lặn xuống xếp thành một hàng." },
-                { id: "s17", sentence: "I hop over the rope at home.", meaning: "Tớ nhảy qua sợi dây thừng ở nhà." },
-                { id: "s18", sentence: "Hum a tune on a tube in June.", meaning: "Ngâm nga một giai điệu bên tuýp kem vào tháng Sáu." }
+                { num: "49.", sentence: "A shark looks at a star from the car in the park.", meaning: "Một chú cá mập ngắm nhìn một ngôi sao từ chiếc xe ô tô trong công viên.", style: "orange" },
+                { num: "50.", sentence: "The girl and the nurse see a bird and a turtle.", meaning: "Cô bé và cô y tá nhìn thấy một chú chim và một chú rùa.", style: "blue" },
+                { num: "51.", sentence: "The teacher, the doctor and the actor look at a spider.", meaning: "Thầy giáo, bác sĩ và nam diễn viên cùng nhau quan sát một con nhện.", style: "orange" },
+                { num: "52.", sentence: "A mouse runs out of the house to see a cow and an owl.", meaning: "Một chú chuột chạy ra khỏi nhà để ngắm nhìn một chú bò và một chú cú mèo.", style: "blue" },
+                { num: "53.", sentence: "The boy plays with a toy and finds a coin in the oil.", meaning: "Cậu bé chơi với món đồ chơi và tìm thấy một đồng xu ở trong dầu.", style: "orange" },
+                { num: "54.", sentence: "The cook reads a book and puts his foot on the wood.", meaning: "Chú đầu bếp đang đọc một cuốn sách và đặt bàn chân của mình lên khúc gỗ.", style: "blue" }
             ]
         };
 
-        // BỘ ENGINE PHÁT ÂM CHUẨN OXFORD TỐC ĐỘ CHẬM 0.7
-        function playSound(textToRead, element, activeClass) {
-            window.speechSynthesis.cancel(); 
-            
+        // THUẬT TOÁN AUTOMATIC PHONICS HIGHLIGHTER CHO LESSON 13
+        function highlightBlends(text) {
+            let coreWord = text.replace(/[.,?!]$/, ""); // Tách riêng dấu câu ở cuối từ
+            let punctuation = text.substring(coreWord.length);
+            let lowerWord = coreWord.toLowerCase();
+
+            // Danh sách các nhóm chữ tiêu điểm mục tiêu của bài học
+            const targets = ["ar", "ir", "ur", "er", "or", "ou", "ow", "oi", "oy", "oo"];
+            let highlighted = coreWord;
+
+            for (let target of targets) {
+                if (lowerWord.includes(target)) {
+                    let idx = lowerWord.indexOf(target);
+                    // Cắt chuỗi và bọc thẻ màu đỏ rực cho tổ hợp mục tiêu được tìm thấy
+                    highlighted = coreWord.substring(0, idx) + 
+                                  `<span class="highlight-vowel">${coreWord.substr(idx, target.length)}</span>` + 
+                                  coreWord.substring(idx + target.length);
+                    break; // Chỉ xử lý một cụm mục tiêu đầu tiên tìm thấy trong từ
+                }
+            }
+
+            return highlighted + punctuation;
+        }
+
+        // ENGINE PHÁT ÂM GIỌNG MỸ CHUẨN - TỐC ĐỘ SƯ PHẠM CHẬM RÕ (0.7)
+        function playAudio(textToSpeak, element, activeClass) {
+            window.speechSynthesis.cancel(); // Tắt âm thanh cũ ngay lập tức tránh chồng chéo
+
+            // Reset trạng thái màu sắc nhấp nháy của tất cả các khối
             document.querySelectorAll('.word-card, .play-all-btn, .clickable-word').forEach(el => {
                 el.classList.remove('playing', 'playing-word');
             });
@@ -356,12 +385,12 @@
                 element.classList.add(activeClass);
             }
 
-            // Lọc bỏ dấu câu để API đọc trôi chảy
-            let cleanText = textToRead.replace(/[.,?\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+            // Làm sạch các ký tự đặc biệt giúp API Web Speech đọc mượt, chuẩn xác
+            let cleanText = textToSpeak.replace(/[.,?!]/g, "");
             let utterance = new SpeechSynthesisUtterance(cleanText);
             
             utterance.lang = 'en-US'; 
-            utterance.rate = 0.7; // Tốc độ chuẩn 0.7 giúp trẻ dễ nghe rõ âm đuôi (Ending sounds)
+            utterance.rate = 0.7; // Tốc độ sư phạm 0.7 lý tưởng để bé nghe rõ nguyên âm và vần đuôi kiểm soát bởi r
 
             utterance.onend = () => {
                 if (element) {
@@ -372,76 +401,48 @@
             window.speechSynthesis.speak(utterance);
         }
 
-        // THUẬT TOÁN HIGHLIGHT TỰ ĐỘNG CHO TỪNG QUY TẮC CỦA LESSON 6 (ĐÃ KHỬ DẤU CÂU)
-        function highlightVowels(text) {
-            let coreWord = text.replace(/[.,?]$/, "");
-            let punctuation = text.substring(coreWord.length);
-            let lowerWord = coreWord.toLowerCase();
-
-            let highlightedCore = "";
-
-            // 1. Nếu từ chứa nguyên âm đi liền "ai" hoặc "ay" -> Bôi đỏ cả cụm liền nhau
-            if (lowerWord.includes("ai") || lowerWord.includes("ay")) {
-                let target = lowerWord.includes("ai") ? "ai" : "ay";
-                let idx = lowerWord.indexOf(target);
-                
-                highlightedCore = coreWord.substring(0, idx) + 
-                                  `<span class="highlight-vowel">${coreWord.substr(idx, 2)}</span>` + 
-                                  coreWord.substring(idx + 2);
-            } 
-            // 2. Nếu là quy tắc x_e phân tách (o_e, u_e, i_e) -> Bôi đỏ nguyên âm chính và chữ e câm cuối từ
-            else {
-                highlightedCore = coreWord.split('').map((char, index) => {
-                    let lowerChar = char.toLowerCase();
-                    if (lowerChar === 'o' || lowerChar === 'u' || lowerChar === 'i' || (lowerChar === 'e' && index === coreWord.length - 1)) {
-                        return `<span class="highlight-vowel">${char}</span>`;
-                    }
-                    return char;
-                }).join('');
-            }
-
-            return highlightedCore + punctuation;
-        }
-
-        // ĐỔ DỮ LIỆU LÊN GIAO DIỆN TỪ VỰNG
-        function loadWords() {
+        // TỰ ĐỘNG IN RA DANH SÁCH 24 TỪ VỰNG TAB 1
+        function renderVocabulary() {
             const grid = document.getElementById('wordsGrid');
-            grid.innerHTML = lesson6Data.words.map(item => `
-                <div class="word-card" onclick="playSound('${item.word}', this, 'playing')">
-                    <div class="word-text">${highlightVowels(item.word)}</div>
+            grid.innerHTML = lesson13Data.words.map(item => `
+                <div class="word-card" onclick="playAudio('${item.word}', this, 'playing')">
+                    <div class="word-text">${highlightBlends(item.word)}</div>
                     <div class="ipa-text">${item.ipa}</div>
                     <div class="meaning-text">${item.meaning}</div>
                 </div>
             `).join('');
         }
 
-        // ĐỔ DỮ LIỆU LÊN GIAO DIỆN CÂU LUYỆN ĐỌC TRỰC QUAN
-        function loadSentences() {
+        // TỰ ĐỘNG IN RA ĐẦY ĐỦ 6 CÂU LUYỆN ĐỌC TƯƠNG TÁC TAB 2
+        function renderSentences() {
             const list = document.getElementById('sentencesList');
-            list.innerHTML = lesson6Data.sentences.map(item => {
+            list.innerHTML = lesson13Data.sentences.map(item => {
                 const wordsArray = item.sentence.split(' ');
                 const wordsRowHtml = wordsArray.map(word => {
-                    const cleanWord = word.replace(/[.,?]/g, "");
+                    const cleanWord = word.replace(/[.,?!]/g, "");
                     return `
-                        <span class="clickable-word" onclick="event.stopPropagation(); playSound('${cleanWord}', this, 'playing-word')">
-                            ${highlightVowels(word)}
+                        <span class="clickable-word" onclick="event.stopPropagation(); playAudio('${cleanWord}', this, 'playing-word')">
+                            ${highlightBlends(word)}
                         </span>
                     `;
                 }).join('');
 
                 return `
-                    <div class="sentence-card">
-                        <button class="play-all-btn" onclick="playSound('${item.sentence}', this, 'playing')">
-                            🔊 Nghe cả câu
+                    <div class="sentence-card border-style-${item.style}">
+                        <button class="play-all-btn" onclick="playAudio('${item.sentence}', this, 'playing')">
+                            🔊 Nghe Toàn Bộ Câu
                         </button>
-                        <div class="sentence-words-row">${wordsRowHtml}</div>
+                        <div class="sentence-words-row">
+                            <span class="sentence-num">${item.num}</span>
+                            ${wordsRowHtml}
+                        </div>
                         <div class="sentence-translation">${item.meaning}</div>
                     </div>
                 `;
             }).join('');
         }
 
-        // ĐIỀU HƯỚNG TAB MƯỢT MÀ
+        // ĐIỀU HƯỚNG CHUYỂN ĐỔI GIỮA HAI TAB BÀI HỌC
         function changeTab(tabName) {
             document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -456,10 +457,9 @@
             }
         }
 
-        // Khởi chạy ứng dụng ngay khi mở trang thành công
         window.onload = () => {
-            loadWords();
-            loadSentences();
+            renderVocabulary();
+            renderSentences();
         };
     </script>
 </body>

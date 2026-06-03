@@ -268,6 +268,7 @@
 </head>
 <body>
 
+    <!-- TIÊU ĐỀ PHÂN CẤP THỊ GIÁC CHUẨN SƯ PHẠM MẪU CỦA BẠN -->
     <header>
         <div class="main-title">BÉ LUYỆN ĐÁNH VẦN TIẾNG ANH</div>
         <div class="sub-title">Tiếng anh cô Hà - Nhịp cầu nhỏ bước ra thế giới</div>
@@ -281,14 +282,18 @@
 
     <div class="container">
         
+        <!-- TAB 1: 24 TỪ VỰNG TỰ ĐỘNG ĐỔ THEO ẢNH SƠ ĐỒ PHONICS -->
         <section id="sectionWords" class="content-section active">
             <div class="words-grid" id="wordsGrid">
-                </div>
+                <!-- Dữ liệu tự động đổ từ Javascript -->
+            </div>
         </section>
 
+        <!-- TAB 2: 3 CÂU LUYỆN ĐỌC GIẢI MÃ TỪ REBUS PUZZLE -->
         <section id="sectionSentences" class="content-section">
             <div class="sentence-list" id="sentencesList">
-                </div>
+                <!-- Dữ liệu tự động đổ từ Javascript -->
+            </div>
         </section>
 
     </div>
@@ -330,14 +335,13 @@
                 { word: "line", ipa: "/laɪn/", meaning: "hàng lối, xếp hàng" }
             ],
             sentences: [
-                // Khôi phục chữ viết liền (Themanhas, seea, inthe) và hình ảnh ẩn thành câu chuẩn
                 { id: "s13", sentence: "The man has tape and a cane.", meaning: "Người đàn ông có băng keo và một cây gậy." },
                 { id: "s14", sentence: "I see a skate in a cave.", meaning: "Tôi nhìn thấy một chiếc giày trượt ở trong một hang động." },
                 { id: "s15", sentence: "My kite is fine in the pine.", meaning: "Cái diều của tôi vẫn rất tốt ở trên cây thông." }
             ]
         };
 
-        // BỘ ENGINE PHÁT ÂM CHUẨN TỐC ĐỘ 0.7 
+        // BỘ ENGINE PHÁT ÂM CHUẨN TỐC ĐỘ CHẬM 0.7 CHO HỌC SINH TIỂU HỌC
         function playSound(textToRead, element, activeClass) {
             window.speechSynthesis.cancel(); 
             
@@ -349,12 +353,12 @@
                 element.classList.add(activeClass);
             }
 
-            // Loại bỏ các ký tự dấu câu để giọng đọc máy không bị ngắt quãng vô lý
+            // Xóa dấu câu để API đọc không bị vấp
             let cleanText = textToRead.replace(/[.,?\/#!$%\^&\*;:{}=\-_`~()]/g, "");
             let utterance = new SpeechSynthesisUtterance(cleanText);
             
             utterance.lang = 'en-US'; 
-            utterance.rate = 0.7; // Tốc độ chậm rãi, rõ ràng từng âm đuôi (ending sounds) cho các con nghe
+            utterance.rate = 0.7; // Giọng đọc chậm rãi giúp các con dễ bắt chước bật âm đuôi
 
             utterance.onend = () => {
                 if (element) {
@@ -365,16 +369,23 @@
             window.speechSynthesis.speak(utterance);
         }
 
-        // THUẬT TOÁN TỰ ĐỘNG BÔI ĐỎ PHONICS (Nhận diện nguyên âm chính và âm 'e' câm ở cuối từ)
+        // THUẬT TOÁN TỰ ĐỘNG NHẬN DIỆN VÀ BÔI ĐỎ PHONICS (ĐÃ NÂNG CẤP XỬ LÝ DẤU CÂU)
         function highlightVowels(text) {
-            return text.split('').map((char, index) => {
+            // Tách phần chữ cốt lõi và phần dấu câu ở cuối (ví dụ: "cane." -> chữ "cane", dấu ".")
+            let coreWord = text.replace(/[.,?]$/, "");
+            let punctuation = text.substring(coreWord.length);
+
+            let highlightedCore = coreWord.split('').map((char, index) => {
                 let lowerChar = char.toLowerCase();
-                // Bôi đỏ chữ 'a' và 'i' đóng vai trò âm chính, và chữ 'e' câm đứng cuối từ tạo nên quy tắc Magic E (âm dài)
-                if (lowerChar === 'a' || lowerChar === 'i' || (lowerChar === 'e' && index === text.length - 1)) {
+                // Bôi đỏ chữ 'a'/'i' chính diện và chữ 'e' câm đứng ở vị trí cuối cùng của từ cốt lõi
+                if (lowerChar === 'a' || lowerChar === 'i' || (lowerChar === 'e' && index === coreWord.length - 1)) {
                     return `<span class="highlight-vowel">${char}</span>`;
                 }
                 return char;
             }).join('');
+
+            // Trả về chuỗi chữ đã bôi đỏ ghép lại với dấu câu gốc để giữ thẩm mỹ cấu trúc câu
+            return highlightedCore + punctuation;
         }
 
         // ĐỔ DỮ LIỆU LÊN GIAO DIỆN 24 TỪ VỰNG
@@ -430,7 +441,7 @@
             }
         }
 
-        // Khởi chạy ứng dụng ngay khi trình duyệt mở file thành công
+        // Khởi chạy ứng dụng ngay khi mở file thành công
         window.onload = () => {
             loadWords();
             loadSentences();

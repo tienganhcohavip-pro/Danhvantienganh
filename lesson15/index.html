@@ -6,16 +6,15 @@
     <title>BÉ LUYỆN ĐÁNH VẦN TIẾNG ANH - LESSON 15</title>
     <style>
         :root {
-            --bg-app: #F0FDF4;          /* Màu nền tổng thể */
-            --header-bg: #E0F2FE;       /* Màu nền thanh tiêu đề */
+            --bg-app: #F0FDF4;          
+            --header-bg: #E0F2FE;       
             --text-brand: #0369A1;      
             --text-main: #1E293B;      
-            --vowel-red: #FF0000;       /* Màu đỏ nổi bật cho cụm vần mục tiêu */
+            --vowel-red: #FF0000;       
             --btn-word: #38BDF8;
             --btn-sentence: #FB923C;
             --card-bg: #FFFFFF;
             
-            /* Màu viền khung câu tương thích theo ảnh đính kèm */
             --border-orange: #F97316;
             --border-blue: #38BDF8;
         }
@@ -112,7 +111,6 @@
             display: block;
         }
 
-        /* Grid từ vựng */
         .words-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -153,7 +151,6 @@
             margin-bottom: 5px;
         }
 
-        /* Điểm tập trung Phonics bôi đỏ chữ viết tiêu điểm */
         .highlight-vowel {
             color: var(--vowel-red) !important;
             font-weight: 800;
@@ -173,7 +170,6 @@
             font-weight: bold;
         }
 
-        /* Khu vực câu luyện đọc */
         .sentence-list {
             display: flex;
             flex-direction: column;
@@ -297,40 +293,39 @@
     </div>
 
     <script>
-        // CƠ SỞ DỮ LIỆU CHÍNH XÁC THEO HÌNH ẢNH VÀ DỊCH NGHĨA OXFORD DICTIONARY
         const lesson15Data = {
             words: [
-                // Hàng 1: Open 'a' -> /ei/
+                // Hàng 1: /ei/
                 { word: "acorn", ipa: "/ˈeɪkɔːn/", meaning: "quả sồi" }, 
                 { word: "baby", ipa: "/ˈbeɪbi/", meaning: "em bé" }, 
                 { word: "lady", ipa: "/ˈleɪdi/", meaning: "quý bà, phụ nữ" }, 
                 { word: "elevator", ipa: "/ˈelɪveɪtə(r)/", meaning: "thang máy" },
 
-                // Hàng 2: Open 'e', 'i' -> /iː/, /aɪ/
+                // Hàng 2: /iː/, /aɪ/
                 { word: "he", ipa: "/hiː/", meaning: "anh ấy" }, 
                 { word: "she", ipa: "/ʃiː/", meaning: "cô ấy" }, 
                 { word: "tiger", ipa: "/ˈtaɪɡə(r)/", meaning: "con hổ" }, 
                 { word: "child", ipa: "/tʃaɪld/", meaning: "đứa trẻ" },
 
-                // Hàng 3: Open 'o', 'u' -> /əʊ/, /juː/
+                // Hàng 3: /əʊ/, /juː/
                 { word: "cold", ipa: "/kəʊld/", meaning: "lạnh" }, 
                 { word: "hotel", ipa: "/həʊˈtel/", meaning: "khách sạn" }, 
                 { word: "uniform", ipa: "/ˈjuːnɪfɔːm/", meaning: "đồng phục" }, 
                 { word: "music", ipa: "/ˈmjuːzɪk/", meaning: "âm nhạc" },
 
-                // Hàng 4: Schwa 'a' ở cuối -> /ə/
+                // Hàng 4: /ə/
                 { word: "panda", ipa: "/ˈpændə/", meaning: "gấu trúc" }, 
                 { word: "gorilla", ipa: "/ɡəˈrɪlə/", meaning: "con khỉ đột" }, 
                 { word: "banana", ipa: "/bəˈnɑːnə/", meaning: "quả chuối" }, 
                 { word: "umbrella", ipa: "/ʌmˈbrelə/", meaning: "cái ô, cái dù" },
 
-                // Hàng 5: Schwa 'e', 'i', 'o' -> /ə/
+                // Hàng 5: /ə/
                 { word: "chicken", ipa: "/ˈtʃɪkɪn/", meaning: "con gà" }, 
                 { word: "pencil", ipa: "/ˈpensl/", meaning: "bút chì" }, 
                 { word: "lemon", ipa: "/ˈlemən/", meaning: "quả chanh vàng" }, 
                 { word: "surprise", ipa: "/səˈpraɪz/", meaning: "sự ngạc nhiên" },
 
-                // Hàng 6: Short 'o' phát âm là /ʌ/
+                // Hàng 6: /ʌ/
                 { word: "monkey", ipa: "/ˈmʌŋki/", meaning: "con khỉ" }, 
                 { word: "love", ipa: "/lʌv/", meaning: "yêu, thương" }, 
                 { word: "son", ipa: "/sʌn/", meaning: "con trai" }, 
@@ -346,7 +341,7 @@
             ]
         };
 
-        // BÔI ĐỎ CÁC VẦN/CỤM VẦN TIÊU ĐIỂM CHÍNH XÁC THEO ẢNH
+        // ĐÃ CẬP NHẬT TỌA ĐỘ CHÍNH XÁC ĐỂ BÔI ĐỎ ĐÚNG KÝ TỰ MỤC TIÊU
         function highlightBlends(text) {
             let coreWord = text.replace(/[.,?!]$/, ""); 
             let punctuation = text.substring(coreWord.length);
@@ -355,30 +350,30 @@
             let highlighted = coreWord;
 
             const highlightMap = {
-                "acorn": [0],      
-                "baby": [2],       
-                "lady": [2],       
-                "elevator": [4],   
-                "he": [1],         
-                "she": [2],        
-                "tiger": [1],      
-                "child": [2],      
-                "cold": [2],       
-                "hotel": [2],      
-                "uniform": [0],    
-                "music": [1],      
-                "panda": [4],      
-                "gorilla": [6],    
-                "banana": [5],     
-                "umbrella": [7],   
-                "chicken": [5],    
-                "pencil": [4],     
-                "lemon": [3],      
-                "surprise": [1],   
-                "monkey": [1],     
-                "love": [1],       
-                "son": [1],        
-                "honey": [1]       
+                "acorn": [0],      // a
+                "baby": [1],       // b[a]by
+                "lady": [1],       // l[a]dy
+                "elevator": [4],   // elev[a]tor
+                "he": [1],         // h[e]
+                "she": [2],        // sh[e]
+                "tiger": [1],      // t[i]ger
+                "child": [2],      // ch[i]ld
+                "cold": [1],       // c[o]ld
+                "hotel": [1],      // h[o]tel
+                "uniform": [0],    // [u]niform
+                "music": [1],      // m[u]sing -> m[u]sic
+                "panda": [4],      // pand[a]
+                "gorilla": [6],    // gorill[a]
+                "banana": [5],     // banan[a]
+                "umbrella": [7],   // umbrell[a]
+                "chicken": [5],    // chick[e]n
+                "pencil": [4],     // penc[i]l
+                "lemon": [3],      // lem[o]n
+                "surprise": [1],   // s[u]rprise
+                "monkey": [1],     // m[o]nkey
+                "love": [1],       // l[o]ve
+                "son": [1],        // s[o]n
+                "honey": [1]       // h[o]ney
             };
 
             if (highlightMap[lowerWord]) {
@@ -396,7 +391,6 @@
             return highlighted + punctuation;
         }
 
-        // PHÁT ÂM AUDIO TỐC ĐỘ 0.7 CHUẨN SƯ PHẠM
         function playAudio(textToSpeak, element, activeClass) {
             window.speechSynthesis.cancel(); 
 
@@ -423,7 +417,6 @@
             window.speechSynthesis.speak(utterance);
         }
 
-        // TẠO GIAO DIỆN TỪ VỰNG
         function renderVocabulary() {
             const grid = document.getElementById('wordsGrid');
             grid.innerHTML = lesson15Data.words.map(item => `
@@ -435,7 +428,6 @@
             `).join('');
         }
 
-        // TẠO GIAO DIỆN MẪU CÂU LUYỆN ĐỌC
         function renderSentences() {
             const list = document.getElementById('sentencesList');
             list.innerHTML = lesson15Data.sentences.map(item => {
@@ -464,7 +456,6 @@
             }).join('');
         }
 
-        // CHUYỂN ĐỔI TAB BÀI HỌC
         function changeTab(tabName) {
             document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));

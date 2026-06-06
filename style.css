@@ -21,7 +21,7 @@ body {
 
 .container {
     width: 100%;
-    max-width: 800px;
+    max-width: 850px;
     background: #ffffff;
     border-radius: 24px;
     box-shadow: 0 10px 30px rgba(43, 112, 201, 0.1);
@@ -29,7 +29,6 @@ body {
     box-sizing: border-box;
 }
 
-/* Header style giống ảnh */
 .app-header {
     text-align: center;
     border: 2px solid #e1f0ff;
@@ -53,7 +52,7 @@ body {
     font-weight: bold;
 }
 
-/* Thanh Tiến độ Gamification */
+/* Gamification Bar */
 .gamification-bar {
     display: flex;
     align-items: center;
@@ -127,7 +126,7 @@ body {
 .intro-box h2 { color: #1e4d8c; font-size: 20px; }
 .highlight-red { color: var(--danger-color); }
 
-/* Lesson Grid & Cards */
+/* Lesson Grid */
 .section-title {
     text-align: center;
     color: var(--primary-color);
@@ -135,11 +134,11 @@ body {
 }
 .lesson-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
     gap: 20px;
 }
 
-/* Thiết kế Thẻ bài học chuẩn cho trẻ em */
+/* Thẻ Lesson kiểu nút bấm (Thẻ div để chặn lỗi chuyển hướng nhảy trang) */
 .lesson-card {
     background: white;
     border: 2px solid #f0f0f0;
@@ -152,26 +151,24 @@ body {
     flex-direction: column;
     justify-content: space-between;
     box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    cursor: pointer;
+    user-select: none;
 }
 .lesson-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(43, 112, 201, 0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px rgba(43, 112, 201, 0.12);
 }
 
-/* Các trạng thái bài học */
-.lesson-card.completed { border-color: var(--success-color); }
-.lesson-card.in-progress { border-color: var(--warning-color); }
-.lesson-card.locked { opacity: 0.6; background: #fafafa; }
+.lesson-card.completed { border-color: var(--success-color); background-color: #fafffa; }
+.lesson-card.in-progress { border-color: var(--warning-color); background-color: #fffdf5; }
 
-/* Icon minh họa vui nhộn phía trên */
 .lesson-icon {
-    font-size: 30px;
+    font-size: 32px;
     margin-bottom: 5px;
     display: block;
 }
-
 .lesson-number {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     color: var(--accent-color);
     margin: 5px 0;
@@ -182,13 +179,13 @@ body {
     font-size: 13px;
     color: #555;
     margin: 0 0 10px 0;
-    min-height: 36px;
+    min-height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
+    line-height: 1.4;
 }
 
-/* Huy hiệu tích hoàn thành */
 .status-badge {
     position: absolute;
     top: -10px;
@@ -200,45 +197,43 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 }
 .status-badge.done { color: var(--success-color); }
 .status-badge.wait { color: #ccc; }
 
-/* Tiến trình nhỏ bên trong mỗi thẻ bài học */
 .mini-progress {
     font-size: 11px;
-    color: #888;
-    background: #f5f5f5;
-    padding: 3px 8px;
+    color: #777;
+    background: #f0f4f8;
+    padding: 4px 8px;
     border-radius: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    font-weight: 500;
 }
 
-/* Cụm nút tương tác: Luyện tập & Nghe đọc */
+/* Actions Area */
 .card-actions {
     display: flex;
     justify-content: space-between;
-    gap: 5px;
-    margin-top: auto;
+    gap: 6px;
 }
 .btn-action {
     flex: 1;
     border: none;
-    padding: 6px 4px;
-    border-radius: 8px;
+    padding: 8px 4px;
+    border-radius: 10px;
     font-size: 11px;
     font-weight: bold;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3px;
-    transition: background 0.2s;
+    gap: 4px;
+    transition: background 0.2s, transform 0.1s;
 }
 .btn-practice { background: #e8f4fd; color: var(--primary-color); }
 .btn-practice:hover { background: #d0e8fc; }
 .btn-listen { background: #fff4e5; color: #f39c12; }
 .btn-listen:hover { background: #ffe9cc; }
-
-.btn-action i { font-size: 14px; }
+.btn-action i { font-size: 13px; }

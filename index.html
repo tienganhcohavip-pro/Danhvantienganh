@@ -1,421 +1,61 @@
-```html id="vqjef9"
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Bé luyện đánh vần tiếng Anh</title>
-
-  <style>
-
-    *{
-      box-sizing:border-box;
-    }
-
-    body{
-
-      margin:0;
-      padding:0;
-
-      font-family:Arial, sans-serif;
-
-      background:linear-gradient(
-        to bottom,
-        #f4f9fc,
-        #edf5f8
-      );
-
-      color:#2f5d7c;
-    }
-
-    .container{
-
-      max-width:1200px;
-
-      margin:auto;
-
-      padding:40px 20px 80px;
-    }
-
-    /* ===== HEADER ===== */
-
-    .hero{
-
-      background:white;
-
-      border-radius:30px;
-
-      padding:50px 35px;
-
-      text-align:center;
-
-      box-shadow:0 8px 25px rgba(0,0,0,0.06);
-
-      border:3px solid #dcecf5;
-
-      margin-bottom:40px;
-    }
-
-    .main-title{
-
-      font-size:52px;
-
-      font-weight:bold;
-
-      color:#2f5d7c;
-
-      line-height:1.3;
-
-      margin-bottom:20px;
-    }
-
-    .sub-title{
-
-      font-size:24px;
-
-      color:#6d7f8b;
-
-      line-height:1.7;
-
-      margin-bottom:30px;
-    }
-
-    .age-box{
-
-      display:inline-block;
-
-      background:#e9f6ff;
-
-      color:#2f5d7c;
-
-      padding:12px 25px;
-
-      border-radius:999px;
-
-      font-size:20px;
-
-      font-weight:bold;
-    }
-
-    /* ===== INTRO ===== */
-
-    .intro-section{
-
-      background:white;
-
-      border-radius:30px;
-
-      padding:40px 30px;
-
-      margin-bottom:45px;
-
-      box-shadow:0 8px 25px rgba(0,0,0,0.05);
-
-      border:3px solid #dcecf5;
-    }
-
-    .section-title{
-
-      font-size:36px;
-
-      font-weight:bold;
-
-      color:#2f5d7c;
-
-      margin-bottom:25px;
-
-      text-align:center;
-    }
-
-    .intro-text{
-
-      font-size:22px;
-
-      line-height:1.9;
-
-      color:#556b78;
-
-      text-align:center;
-    }
-
-    .highlight{
-
-      color:#ff6b6b;
-
-      font-weight:bold;
-    }
-
-    /* ===== LESSONS ===== */
-
-    .lesson-title{
-
-      text-align:center;
-
-      font-size:42px;
-
-      color:#2f5d7c;
-
-      margin-bottom:35px;
-
-      font-weight:bold;
-    }
-
-    .lesson-grid{
-
-      display:grid;
-
-      grid-template-columns:
-      repeat(auto-fit,minmax(220px,1fr));
-
-      gap:28px;
-    }
-
-    .lesson-card{
-
-      background:white;
-
-      border-radius:25px;
-
-      padding:35px 20px;
-
-      text-decoration:none;
-
-      text-align:center;
-
-      border:3px solid #dcecf5;
-
-      box-shadow:0 6px 18px rgba(0,0,0,0.05);
-
-      transition:0.3s;
-    }
-
-    .lesson-card:hover{
-
-      transform:translateY(-8px);
-
-      border-color:#91d1f3;
-
-      box-shadow:0 12px 24px rgba(0,0,0,0.08);
-    }
-
-    .lesson-number{
-
-      font-size:34px;
-
-      font-weight:bold;
-
-      color:#ff6b6b;
-
-      margin-bottom:12px;
-    }
-
-    .lesson-name{
-
-      font-size:22px;
-
-      color:#2f5d7c;
-
-      font-weight:bold;
-    }
-
-    /* ===== FOOTER ===== */
-
-    .footer{
-
-      text-align:center;
-
-      margin-top:60px;
-
-      font-size:18px;
-
-      color:#7a8c98;
-
-      line-height:1.8;
-    }
-
-    /* ===== MOBILE ===== */
-
-    @media(max-width:768px){
-
-      .main-title{
-        font-size:38px;
-      }
-
-      .sub-title{
-        font-size:20px;
-      }
-
-      .section-title{
-        font-size:30px;
-      }
-
-      .intro-text{
-        font-size:19px;
-      }
-
-      .lesson-title{
-        font-size:34px;
-      }
-
-    }
-
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bé Luyện Đánh Vần Tiếng Anh</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
 
-  <div class="container">
+    <div class="container">
+        <header class="app-header">
+            <h1>Bé luyện đánh vần tiếng Anh</h1>
+            <p class="teacher-name">Tiếng Anh cô Hà</p>
+            <p class="slogan">Nhịp cầu nhỏ bước ra thế giới</p>
+            <span class="badge-target">Dành cho học sinh Tiểu học</span>
+        </header>
 
-    <!-- HEADER -->
+        <section class="gamification-bar">
+            <div class="user-avatar">
+                <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Lucky" alt="Avatar">
+                <div class="level-badge">Lv.1</div>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-info">
+                    <span class="star-reward"><i class="fas fa-star text-warning"></i> <span id="star-count">12</span> Sao</span>
+                    <span class="percent-text" id="progress-percent">25% Hoàn thành</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: 25%;"></div>
+                </div>
+            </div>
 
-    <div class="hero">
+            <div class="coin-reward">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="Coin" class="coin-icon">
+                <span id="coin-count">150</span>
+            </div>
+        </section>
 
-      <div class="main-title">
-        Bé luyện đánh vần tiếng Anh
-      </div>
+        <section class="intro-box">
+            <h2>Vì sao nên học đánh vần tiếng Anh?</h2>
+            <p>Giúp con <strong class="highlight-red">phát âm chuẩn</strong> mà không cần tra từ điển.</p>
+            <p>Giúp con <strong class="highlight-red">nhớ mặt chữ</strong> để viết đúng chính tả.</p>
+            <p>Giúp con <strong class="highlight-red">dễ dàng tự học từ mới</strong> chỉ bằng cách nhìn vào quy tắc ghép âm.</p>
+        </section>
 
-      <div class="sub-title">
-        Tiếng Anh cô Hà<br>
-        Nhịp cầu nhỏ bước ra thế giới
-      </div>
-
-      <div class="age-box">
-        Dành cho học sinh Tiểu học
-      </div>
-
+        <main class="lesson-section">
+            <h2 class="section-title">Danh sách bài học</h2>
+            
+            <div class="lesson-grid" id="lesson-container">
+                </div>
+        </main>
     </div>
 
-    <!-- INTRO -->
+    <audio id="app-audio" src=""></audio>
 
-    <div class="intro-section">
-
-      <div class="section-title">
-        Vì sao nên học đánh vần tiếng Anh?
-      </div>
-
-      <div class="intro-text">
-
-        Giúp con <span class="highlight">
-        phát âm chuẩn</span> mà không cần tra từ điển.<br><br>
-
-        Giúp con <span class="highlight">
-        nhớ mặt chữ</span> để viết đúng chính tả.<br><br>
-
-        Giúp con <span class="highlight">
-        dễ dàng tự học từ mới</span>
-        chỉ bằng cách nhìn vào quy tắc ghép âm.
-
-      </div>
-
-    </div>
-
-    <!-- LESSON -->
-
-    <div class="lesson-title">
-      Danh sách bài học
-    </div>
-
-    <div class="lesson-grid">
-
-      <a class="lesson-card" href="lesson01/">
-        <div class="lesson-number">Lesson 1</div>
-        <div class="lesson-name">Nguyên âm ngắn /æ/</div>
-      </a>
-
-      <a class="lesson-card" href="lesson02/">
-        <div class="lesson-number">Lesson 2</div>
-        <div class="lesson-name">Nguyên âm ngắn /e/, /i/</div>
-      </a>
-
-      <a class="lesson-card" href="lesson03/">
-        <div class="lesson-number">Lesson 3</div>
-        <div class="lesson-name">Nguyên âm ngắn /i/, /ɒ/</div>
-      </a>
-
-      <a class="lesson-card" href="lesson04/">
-        <div class="lesson-number">Lesson 4</div>
-        <div class="lesson-name">Nguyên âm ngắn /ʌ/</div>
-      </a>
-
-      <a class="lesson-card" href="lesson05/">
-        <div class="lesson-number">Lesson 5</div>
-        <div class="lesson-name">Nguyên âm dài /ei/,/aɪ/</div>
-      </a>
-
-      <a class="lesson-card" href="lesson06/">
-        <div class="lesson-number">Lesson 6</div>
-        <div class="lesson-name">Nguyên âm dài /əʊ/, /ju/, /u;/, /ei/</div>
-      </a>
-      
-  <a class="lesson-card" href="lesson07/">
-        <div class="lesson-number">Lesson 7</div>
-        <div class="lesson-name">Nguyên âm dài /i:/, /i/, /ai/</div>
-      </a>
-      
-  <a class="lesson-card" href="lesson08/">
-        <div class="lesson-number">Lesson 8</div>
-        <div class="lesson-name">Nguyên âm dài /əʊ/, /u;/, /ju/</div>
-      </a>
-
-  <a class="lesson-card" href="lesson09/">
-        <div class="lesson-number">Lesson 9</div>
-        <div class="lesson-name">Phụ âm ghép /bl/, /cl/, /br/, /cr/, /fl/, /gl/, /fr/, /gr/, /pl/, /sl/, /dr/, /tr/</div>
-      </a>
-
-  <a class="lesson-card" href="lesson10/">
-        <div class="lesson-number">Lesson 10</div>
-        <div class="lesson-name">Phụ âm ghép /sm/, /sn/, /sp/, /sw/, /st/, /sh/, /ch/, /ph/, /wh/
-</div>
-      </a>
-      
-<a class="lesson-card" href="lesson11/">
-        <div class="lesson-number">Lesson 11</div>
-        <div class="lesson-name">Phụ âm ghép /ð/, /θ/, /k/, /kw/, /ŋ/, /nd/, /nt/, /lt/, /mp/
-</div>
-      </a>
-      
-<a class="lesson-card" href="lesson12/">
-        <div class="lesson-number">Lesson 12</div>
-        <div class="lesson-name">Phụ âm ghép /sk/, /sc/, /spr/, str/, /spl/, /squ/, /s/, /dʒ/, /z/</div>
-      </a>
-
-<a class="lesson-card" href="lesson13/">
-        <div class="lesson-number">Lesson 13</div>
-        <div class="lesson-name">Kết hợp chữ /ɑːr/, /ɜː/, /er/, /aʊ/, /ɔɪ/, /ʊ/
-</div>
-      </a>
-
-<a class="lesson-card" href="lesson14/">
-        <div class="lesson-number">Lesson 14</div>
-        <div class="lesson-name">Kết hợp chữ /ɔː/, /ɔːl/, /wɔː/, /ɔːr/, /er/, /e/, /ɪə(r)/</div>
-      </a>
-      
-<a class="lesson-card" href="lesson15/">
-        <div class="lesson-number">Lesson 15</div>
-        <div class="lesson-name">Kết hợp chữ /ei/, /i/, /ai/, /əʊ/, /ju/, /a/, /ə/, /ʌ/</div>
-      </a>
-<a class="lesson-card" href="lesson16/">
-        <div class="lesson-number">Lesson 16</div>
-        <div class="lesson-name">Âm câm & Cụm vần đặc biệt </div>
-      </a>
-      
-<a class="lesson-card" href="lesson17/">
-  <div class="lesson-number">Review</div>
-  <div class="lesson-name">Ôn tập</div>
-</a>
-      
-    </div>
-
-    <!-- FOOTER -->
-
-    <div class="footer">
-      Chúc các con học tập thật vui và tự tin hơn mỗi ngày 🌱
-    </div>
-
-  </div>
-
+    <script src="script.js"></script>
 </body>
 </html>
-```
